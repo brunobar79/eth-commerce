@@ -1,19 +1,96 @@
 
 <html>
 <head>
-<link href=""
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
+<style>
+	.main{
+
+		font-family: "Heebo", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    	font-style: normal;
+	}
+	.left-col{
+		float: left;
+		width: 50%;
+	}
+	.right-col{
+		float: right;
+		width: 50%;
+	}
+
+	.title{
+		color: #333;
+		font-size: 20px;
+		margin-top: 20px;
+		text-align: center;
+	}
+
+	.sample-button {
+		display: block;
+	}
+
+
+
+</style>
 </head>
 <body>
-<div id="myButton" />
+
+<div class="main">
+	<div class="row">
+		<div class="left-col">
+			<div class="title">Pay with Ethereum</div>
+			<div id="pay-button" class="sample-button"></div>
+		</div>
+		<div class="right-col">
+			<pre>
+				<code class="language-javascript">
+	EthCommerce.render({
+		type: 'BUY',
+		targetElement: 'pay-button',
+		amount: 500,
+		currency: 'USD',
+		address: '0x627306090abab3a6e1400e9345bc60c78a8bef57'
+	});
+				</code>
+			</pre>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="left-col">
+			<div class="title">Donate with Ethereum</div>
+			<div id="donate-button" class="sample-button"></div>
+		</div>
+		<div class="right-col">
+			<pre>
+				<code class="language-javascript">
+	EthCommerce.render({
+		type: 'DONATE',
+		targetElement: 'donate-button',
+		amount: 500,
+		currency: 'USD',
+		address: '0x627306090abab3a6e1400e9345bc60c78a8bef57'
+	});
+				</code>
+			</pre>
+		</div>
+	</div>
+
+
+</div>
 
 <script  type="text/javascript" src="../src/index.js"></script> 
 <script type="text/javascript">
 (function() {
-	const targetId = 'myButton', 
-	amount = '1', 
-	address='0x627306090abab3a6e1400e9345bc60c78a8bef57';
 
-	EthCommerce.render(targetId, amount, address);
+	EthCommerce.render({
+		targetElement: 'myButton',
+		amount: 500,
+		currency: 'USD',
+		address: '0x627306090abab3a6e1400e9345bc60c78a8bef57'
+	});
+
 })();
 </script> 
 </body>
