@@ -8,7 +8,9 @@
 
 		font-family: "Heebo", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
     	font-style: normal;
+    	display: block;
 	}
+
 	.left-col{
 		float: left;
 		width: 50%;
@@ -27,6 +29,13 @@
 
 	.sample-button {
 		display: block;
+		max-width: 220px;
+    	margin: auto;
+	}
+
+	.row{
+		display: inline-block;
+    	width: 100%;
 	}
 
 
@@ -36,6 +45,7 @@
 <body>
 
 <div class="main">
+	<h1>Examples</h1>
 	<div class="row">
 		<div class="left-col">
 			<div class="title">Pay with Ethereum</div>
@@ -59,18 +69,39 @@
 
 	<div class="row">
 		<div class="left-col">
-			<div class="title">Donate with Ethereum</div>
-			<div id="donate-button" class="sample-button"></div>
+			<div class="title">Buy with Ethereum</div>
+			<div id="buy-button" class="sample-button"></div>
 		</div>
 		<div class="right-col">
 			<pre>
 				<code class="language-javascript">
 	EthCommerce.render({
-		type: 'DONATE',
-		targetElement: 'donate-button',
-		amount: 500,
-		currency: 'USD',
+		targetElement: 'buy-button',
+		type: 'BUY',
+		amount: 250,
+		currency: 'EUR',
 		address: '0x627306090abab3a6e1400e9345bc60c78a8bef57'
+	});
+				</code>
+			</pre>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="left-col">
+			<div class="title">Custom label</div>
+			<div id="custom-button" class="sample-button"></div>
+		</div>
+		<div class="right-col">
+			<pre>
+				<code class="language-javascript">
+	EthCommerce.render({
+		targetElement: 'custom-button',
+		type: 'CUSTOM',
+		amount: 100,
+		currency: 'CNY',
+		address: '0x627306090abab3a6e1400e9345bc60c78a8bef57',
+		label: 'Get it with ETH!'
 	});
 				</code>
 			</pre>
@@ -85,10 +116,28 @@
 (function() {
 
 	EthCommerce.render({
-		targetElement: 'myButton',
+		targetElement: 'pay-button',
+		type: 'PAY',
 		amount: 500,
 		currency: 'USD',
 		address: '0x627306090abab3a6e1400e9345bc60c78a8bef57'
+	});
+
+	EthCommerce.render({
+		targetElement: 'buy-button',
+		type: 'BUY',
+		amount: 250,
+		currency: 'EUR',
+		address: '0x627306090abab3a6e1400e9345bc60c78a8bef57'
+	});
+
+	EthCommerce.render({
+		targetElement: 'custom-button',
+		type: 'CUSTOM',
+		amount: 100,
+		currency: 'CNY',
+		address: '0x627306090abab3a6e1400e9345bc60c78a8bef57',
+		label: 'Get it with ETH!'
 	});
 
 })();

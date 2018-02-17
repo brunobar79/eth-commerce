@@ -22,7 +22,10 @@ class EthCommerce {
 		    const provider = new Web3(web3.currentProvider);
 		    // Use the browser's ethereum provider
 		  	provider.eth.getAccounts(function(err, accounts) { 
-		  	   EthCommerce.renderButton(accounts[0], targetElement, amount, address, currency, custom);
+		  	   EthCommerce.renderButton({
+		  	   	...options,
+		  	   	account: accounts[0], 
+		  	   });
 		    });
 
 		  } else {
@@ -60,7 +63,13 @@ class EthCommerce {
 		});
 	}
 
-	static renderButton(account, targetElement, amount, address, currency, custom=false){
+	static renderButton(options){
+
+		EthCommerce.renderStyles();
+		
+
+		const {account, targetElement, amount, address, currency, custom, type, label } = options;
+
 
 		const a = document.createElement('a');
 		a.classList.add("eth-btn");
@@ -74,36 +83,45 @@ class EthCommerce {
 
 		const span = document.createElement('span');
 		span.id = 'eth-btn-text';
-		span.textContent = "Pay with Ethereum";
-
-		if(!custom){
-			EthCommerce.renderStyles();
-		}
-
+		
 		iconWrapper.appendChild(img);
 		a.appendChild(iconWrapper);
 		a.appendChild(span);
 
+		let input = null, select = null;
+
+		switch(type){
+			case 'PAY':
+				span.textContent = "Pay with Ethereum";
+			break;
+			case 'BUY':
+				span.textContent = "Buy with Ethereum";
+			break;
+			case 'CUSTOM':
+				span.textContent = label;
+			default:
+				console.warn('EthCommerce: missing parameter type');
+		}
+
 		a.addEventListener('click', e => {
-
 			e.preventDefault();
-			
+				
 			document.getElementById('eth-icon-svg').src= EthCommerce.getImage('LOADING_ICON');
-			EthCommerce.getEtherPriceIn(currency).then(price =>{
+				EthCommerce.getEtherPriceIn(currency).then(price =>{
 
-				let amountIntETH = parseFloat(amount / price);
-				const amountToReceive = web3.toWei(amountIntETH, 'ether');
+					let amountIntETH = parseFloat(amount / price);
+					const amountToReceive = web3.toWei(amountIntETH, 'ether');
 
-				EthCommerce.sendTransaction(account, address, amountToReceive).then( _ =>{
-					document.getElementById('eth-icon-svg').src= EthCommerce.getImage('SUCCESS_ICON');
-					document.getElementById('eth-btn-text').textContent = "Thank you!";
-					
-				}).catch( e =>{
-					document.getElementById('eth-icon-svg').src= EthCommerce.getImage('ETHEREUM_ICON');
-					document.getElementById('eth-btn-text').textContent = "Pay with Ethereum";
-				});
-			})
-			
+					EthCommerce.sendTransaction(account, address, amountToReceive).then( _ =>{
+						document.getElementById('eth-icon-svg').src= EthCommerce.getImage('SUCCESS_ICON');
+						document.getElementById('eth-btn-text').textContent = "Thank you!";
+						
+					}).catch( e =>{
+						document.getElementById('eth-icon-svg').src= EthCommerce.getImage('ETHEREUM_ICON');
+						document.getElementById('eth-btn-text').textContent = "Pay with Ethereum";
+					});
+			});
+
 		});
 		
 		document.getElementById(targetElement).appendChild(a);
@@ -116,7 +134,7 @@ class EthCommerce {
 		const style = document.createElement('style');
 		style.innerHTML =
 		'.eth-btn {' +
-			'margin: 25px;' +
+			'margin: 25px 0px;' +
 			'width: 80%;' +
 			'min-width: 220px;' +
 			'max-width: 220px;' +
@@ -130,6 +148,9 @@ class EthCommerce {
 			'user-select: none;' +
 			'transition: all 400ms ease 0s;' +
 			'display: flex;' +
+		'}'+
+		'.eth-btn.donate{' +
+			'max-width: 320px;' +
 		'}'+
 		'.eth-btn .eth-icon-wrapper {'+
 			'position: absolute;' +
@@ -160,6 +181,19 @@ class EthCommerce {
 		'.eth-btn:hover {' +
 			'box-shadow: 0 3px 8px rgba(117, 117, 117, .5);' +
 			'user-select: none;' +
+		'}' +
+		'.eth-donation-input {' +
+			'width: 60px;' +
+			'margin: 5px;' +
+			'padding: 5px;' +
+			'font-size: 13px;' +
+		'}' +
+		'.eth-donation-select {' +
+			'width: 60px;' +
+			'height: 30px;' +
+			'margin: 5px;' +
+			'padding: 5px;' +
+			'font-size: 13px;' +
 		'}' +
 		'.eth-btn:active {' +
 			'box-shadow: 0 1px 1px #757575;' +
