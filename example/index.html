@@ -43,6 +43,22 @@
     	width: 100%;
 	}
 
+	/*Custom button styles*/
+	#custom-button .eth-btn{
+		border-radius: 30px;
+		background-color: #263cb8;
+		padding: 10px 15px;
+	}
+
+	#custom-button .eth-icon-wrapper{
+		display: none;
+	} 
+
+	#custom-button #eth-btn-text{
+		color: white;
+		font-size: 18px;
+	}
+
 
 
 </style>
@@ -51,6 +67,9 @@
 
 <div class="main">
 	<h1>Examples</h1>
+	
+	<h4>Make sure you are in a testnet (for ex. Ropsten) or using your local instance, otherwise your ETH will be lost!</h4>
+
 	<div class="row">
 		<div class="left-col">
 			<div class="title">Pay with Ethereum</div>
@@ -108,7 +127,7 @@
 
 	<div class="row">
 		<div class="left-col">
-			<div class="title">Custom label</div>
+			<div class="title">Custom button</div>
 			<div id="custom-button" class="sample-button"></div>
 		</div>
 		<div class="right-col">
@@ -120,7 +139,7 @@
 			targetElement: 'custom-button',
 			type: 'CUSTOM',
 			amount: 100,
-			currency: 'YCN',
+			currency: 'CNY',
 			address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
 			label: 'Get it with ETH!'
 		}, (e)=>{
@@ -177,7 +196,7 @@
 			targetElement: 'custom-button',
 			type: 'CUSTOM',
 			amount: 100,
-			currency: 'YCN',
+			currency: 'CNY',
 			address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4',
 			label: 'Get it with ETH!'
 		}, (e)=>{

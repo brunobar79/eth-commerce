@@ -101,8 +101,8 @@ class EthCommerce {
       )
         .then(response => response.json())
         .then(data => {
-          console.log("GOT ETH PRICE");
-          resolve(data.USD);
+          console.log("GOT ETH PRICE", data);
+          resolve(data[currency]);
         })
         .catch(e => {
           reject(e);
@@ -269,19 +269,6 @@ class EthCommerce {
       "}" +
       ".eth-web3-missing a{	" +
       "color: #FF0000;" +
-      "}" +
-      ".eth-donation-input {" +
-      "width: 60px;" +
-      "margin: 5px;" +
-      "padding: 5px;" +
-      "font-size: 13px;" +
-      "}" +
-      ".eth-donation-select {" +
-      "width: 60px;" +
-      "height: 30px;" +
-      "margin: 5px;" +
-      "padding: 5px;" +
-      "font-size: 13px;" +
       "}" +
       ".eth-btn:active {" +
       "box-shadow: 0 1px 1px #757575;" +
