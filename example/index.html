@@ -14,7 +14,7 @@
 	h1{
 		text-align: center;
 	}
-	
+
 	.left-col{
 		float: left;
 		width: 50%;
@@ -119,14 +119,22 @@
 <script type="text/javascript">
 (function() {
 
-	EthCommerce.render({
-		targetElement: 'pay-button',
-		type: 'PAY',
-		amount: 500,
-		currency: 'USD',
-		address: '0x627306090abab3a6e1400e9345bc60c78a8bef57'
-	});
+	const ethCommerce = new EthCommerce();
+	ethCommerce.render(
+		{
+			targetElement: 'pay-button',
+			type: 'PAY',
+			amount: 10,
+			currency: 'USD',
+			address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
+		}, (e)=>{
+			console.log('error callback', e);
+		},(tx)=>{
+			console.log('success callback', tx);
+		}
+	);
 
+	/*
 	EthCommerce.render({
 		targetElement: 'buy-button',
 		type: 'BUY',
@@ -138,11 +146,11 @@
 	EthCommerce.render({
 		targetElement: 'custom-button',
 		type: 'CUSTOM',
-		amount: 100,
+		amount: 1000,
 		currency: 'CNY',
 		address: '0x627306090abab3a6e1400e9345bc60c78a8bef57',
 		label: 'Get it with ETH!'
-	});
+	});*/
 
 })();
 </script> 
