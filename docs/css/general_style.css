@@ -1,0 +1,397 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:100,200,300,400,500,600,700,800,900|Roboto:100,300,400,500,700,900');
+/* Set a unified style */
+*{
+	box-sizing:border-box;
+	margin:0px;
+	padding: 0;
+	text-decoration:none;
+	list-style:none;
+	border:0px;
+	transition:ease all 0.3s;
+	-webkit-transition:ease all 0.3s;
+}
+body{
+	font-size:14px;
+	font-family:'Roboto', sans-serif;
+}
+p{
+	font-size:16px;
+	font-family:'Montserrat', sans-serif;
+	line-height:28px;
+	color:#232323;
+}
+h3,h2,h1{
+	position:relative;
+	margin-bottom:30px;
+	font-size:50px;
+	font-family:'Raleway', sans-serif;
+	font-weight:normal;
+	text-transform:capitalize;
+}
+.animated{
+	
+	transition:ease all 0.3s;
+	-webkit-transition:ease all 0.3s;
+}
+@media(max-width:768px){
+	h3{
+		font-size:40px;
+	}
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+*::-webkit-scrollbar {
+    width: 10px;
+}
+*::-webkit-scrollbar-track {
+	background:#F8F8F8;
+}
+*::-webkit-scrollbar-thumb {
+	background:#929292;
+}
+*::-webkit-scrollbar-thumb:hover{
+	background:#d81143;
+}
+
+/* Set a clear fix */
+.lx-clear-fix{
+	clear:both;
+}
+
+/* Set the layouts */
+.lx-g1{
+	position:relative;
+	width:100%;
+	padding:15px;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g1-f{
+	position:relative;
+	width:100%;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g2{
+	float:left;
+	position:relative;
+	width:50%;
+	padding:15px;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g2-f{
+	float:left;
+	position:relative;
+	width:50%;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g3{
+	float:left;
+	position:relative;
+	width:33.33%;
+	padding:15px;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g3-f{
+	float:left;
+	position:relative;
+	width:33.33%;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g3-2{
+	float:left;
+	position:relative;
+	width:66.66%;
+	padding:15px;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g3-2-f{
+	float:left;
+	position:relative;
+	width:66.66%;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g4{
+	float:left;
+	position:relative;
+	width:25%;
+	padding:15px;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g4-f{
+	float:left;
+	position:relative;
+	width:25%;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g4-3{
+	float:left;
+	position:relative;
+	width:75%;
+	padding:15px;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g4-3-f{
+	float:left;
+	position:relative;
+	width:75%;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g5{
+	float:left;
+	position:relative;
+	width:20%;
+	padding:15px;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g5-f{
+	float:left;
+	position:relative;
+	width:20%;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g5-2{
+	float:left;
+	position:relative;
+	width:40%;
+	padding:15px;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g5-2-f{
+	float:left;
+	position:relative;
+	width:40%;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g5-3{
+	float:left;
+	position:relative;
+	width:60%;
+	padding:15px;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g5-3-f{
+	float:left;
+	position:relative;
+	width:60%;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g5-4{
+	float:left;
+	position:relative;
+	width:80%;
+	padding:15px;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g5-4-f{
+	float:left;
+	position:relative;
+	width:80%;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g6{
+	float:left;
+	position:relative;
+	width:16.66%;
+	padding:15px;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g6-f{
+	float:left;
+	position:relative;
+	width:16.66%;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g6-5{
+	float:left;
+	position:relative;
+	width:83.33%;
+	padding:15px;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g6-5-f{
+	float:left;
+	position:relative;
+	width:83.33%;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g8{
+	float:left;
+	position:relative;
+	width:12.5%;
+	padding:15px;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g8-f{
+	float:left;
+	position:relative;
+	width:12.5%;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g8-7{
+	float:left;
+	position:relative;
+	width:87.5%;
+	padding:15px;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.lx-g8-7-f{
+	float:left;
+	position:relative;
+	width:87.5%;
+	opacity:1.0;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+@media(max-width:768px){
+	.lx-g1{
+		width:100%;
+	}
+	.lx-g1-f{
+		width:100%;
+	}
+	.lx-g2{
+		width:100%;
+	}
+	.lx-g2-f{
+		width:100%;
+	}
+	.lx-g3{
+		width:100%;
+	}
+	.lx-g3-f{
+		width:100%;
+	}
+	.lx-g3-2{
+		width:100%;
+	}
+	.lx-g3-2-f{
+		width:100%;
+	}
+	.lx-g4{
+		width:100%;
+	}
+	.lx-g4-f{
+		width:100%;
+	}
+	.lx-g4-3{
+		width:100%;
+	}
+	.lx-g4-3-f{
+		width:100%;
+	}
+	.lx-g5{
+		width:100%;
+	}
+	.lx-g5-f{
+		width:100%;
+	}
+	.lx-g5-2{
+		width:100%;
+	}
+	.lx-g5-2-f{
+		width:100%;
+	}
+	.lx-g5-3{
+		width:100%;
+	}
+	.lx-g5-3-f{
+		width:100%;
+	}
+	.lx-g5-4{
+		width:100%;
+	}
+	.lx-g5-4-f{
+		width:100%;
+	}
+	.lx-g6{
+		width:100%;
+	}
+	.lx-g6-f{
+		width:100%;
+	}
+	.lx-g6-5{
+		width:100%;
+	}
+	.lx-g6-5-f{
+		width:100%;
+	}
+	.lx-g8{
+		width:100%;
+	}
+	.lx-g8-f{
+		width:100%;
+	}
+	.lx-g8-7{
+		width:100%;
+	}
+	.lx-g8-7-f{
+		width:100%;
+	}
+}
+
+/* Gallery effects */
+.lx-col-hide{
+	width:0%;
+	margin:0%;
+	padding:0%;
+	opacity:0.0;
+	transform:scale(0.0);
+}

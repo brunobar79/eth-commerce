@@ -1,0 +1,12 @@
+/* Settings reseters */
+.lx-mb-0{
+	margin-bottom:0px;
+}
+@media(max-width:768px){
+	.lx-mb-0{
+		margin-bottom:40px;
+	}
+}
+.lx-mb-00{
+	margin-bottom:0px;
+}
