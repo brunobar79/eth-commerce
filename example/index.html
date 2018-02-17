@@ -27,7 +27,8 @@
 	.title{
 		color: #333;
 		font-size: 20px;
-		margin-top: 20px;
+		margin-top: 40px;
+		margin-bottom: 40px;
 		text-align: center;
 	}
 
@@ -58,13 +59,20 @@
 		<div class="right-col">
 			<pre>
 				<code class="language-javascript">
-	EthCommerce.render({
-		type: 'BUY',
-		targetElement: 'pay-button',
-		amount: 500,
-		currency: 'USD',
-		address: '0x627306090abab3a6e1400e9345bc60c78a8bef57'
-	});
+	const ethCommerce = new EthCommerce();
+	ethCommerce.render(
+		{
+			targetElement: 'pay-button',
+			type: 'PAY',
+			amount: 10,
+			currency: 'USD',
+			address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
+		}, (e)=>{
+			console.log('error callback', e);
+		},(tx)=>{
+			console.log('success callback', tx);
+		}
+	);
 				</code>
 			</pre>
 		</div>
@@ -79,13 +87,20 @@
 		<div class="right-col">
 			<pre>
 				<code class="language-javascript">
-	EthCommerce.render({
-		targetElement: 'buy-button',
-		type: 'BUY',
-		amount: 250,
-		currency: 'EUR',
-		address: '0x627306090abab3a6e1400e9345bc60c78a8bef57'
-	});
+	const ethCommerce2 = new EthCommerce();
+	ethCommerce.render(
+		{
+			targetElement: 'buy-button',
+			type: 'BUY',
+			amount: 5,
+			currency: 'EUR',
+			address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
+		}, (e)=>{
+			console.log('error callback', e);
+		},(tx)=>{
+			console.log('success callback', tx);
+		}
+	);
 				</code>
 			</pre>
 		</div>
@@ -99,14 +114,21 @@
 		<div class="right-col">
 			<pre>
 				<code class="language-javascript">
-	EthCommerce.render({
-		targetElement: 'custom-button',
-		type: 'CUSTOM',
-		amount: 100,
-		currency: 'CNY',
-		address: '0x627306090abab3a6e1400e9345bc60c78a8bef57',
-		label: 'Get it with ETH!'
-	});
+	const ethCommerce3 = new EthCommerce();
+	ethCommerce3.render(
+		{
+			targetElement: 'custom-button',
+			type: 'CUSTOM',
+			amount: 100,
+			currency: 'YCN',
+			address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
+			label: 'Get it with ETH!'
+		}, (e)=>{
+			console.log('error callback', e);
+		},(tx)=>{
+			console.log('success callback', tx);
+		}
+	);
 				</code>
 			</pre>
 		</div>
@@ -134,23 +156,36 @@
 		}
 	);
 
-	/*
-	EthCommerce.render({
-		targetElement: 'buy-button',
-		type: 'BUY',
-		amount: 250,
-		currency: 'EUR',
-		address: '0x627306090abab3a6e1400e9345bc60c78a8bef57'
-	});
+	const ethCommerce2 = new EthCommerce();
+	ethCommerce.render(
+		{
+			targetElement: 'buy-button',
+			type: 'BUY',
+			amount: 5,
+			currency: 'EUR',
+			address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
+		}, (e)=>{
+			console.log('error callback', e);
+		},(tx)=>{
+			console.log('success callback', tx);
+		}
+	);
 
-	EthCommerce.render({
-		targetElement: 'custom-button',
-		type: 'CUSTOM',
-		amount: 1000,
-		currency: 'CNY',
-		address: '0x627306090abab3a6e1400e9345bc60c78a8bef57',
-		label: 'Get it with ETH!'
-	});*/
+	const ethCommerce3 = new EthCommerce();
+	ethCommerce3.render(
+		{
+			targetElement: 'custom-button',
+			type: 'CUSTOM',
+			amount: 100,
+			currency: 'YCN',
+			address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4',
+			label: 'Get it with ETH!'
+		}, (e)=>{
+			console.log('error callback', e);
+		},(tx)=>{
+			console.log('success callback', tx);
+		}
+	);
 
 })();
 </script> 
