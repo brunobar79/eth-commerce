@@ -66,4 +66,5 @@ Then executes the success callback
 
 - [ ] Add support for React Native
 - [ ] Add tests
+- [ ] Store the current state in localStorage to be able to restore it in case of page reload
 
