@@ -101,7 +101,7 @@ class EthCommerce {
     const p = document.createElement("p");
     p.classList.add("eth-web3-missing");
     const str =
-      'Looks like your browser does not support dApps. Install <a  target="_blank" href="https://metamask.io">metamask.io</a> or try visiting this website from a mobile app like <a target="_blank" href="https://www.cipherbrowser.com/">Cypher</a>, <a target="_blank" href="http://www.toshi.org/">Toshi</a> or <a target="_blank" href="https://status.im/">Status</a>';
+      'Looks like your browser does not support dApps. Install <a  target="_blank" href="https://metamask.io">metamask.io</a> or try visiting this website from a mobile app like <a target="_blank" href="https://www.cipherbrowser.com/">Cypher</a> or <a target="_blank" href="https://status.im/">Status</a>';
     p.innerHTML = str;
     div.appendChild(p);
 
