@@ -203,7 +203,7 @@ class EthCommerce {
                   const waiting = document.createElement("p");
                   waiting.classList.add("eth-waiting");
                   waiting.id = "hold-tight";
-                  waiting.textContent = "Hold tight! This might take a while..";
+                  waiting.textContent = "Hold tight! This might take a while...";
                   document.getElementById(targetElement).appendChild(waiting);
                 }
                 this.waitForConfirmation(
@@ -316,6 +316,7 @@ class EthCommerce {
       ".eth-waiting{	" +
       "color: #999999;" +
       "font-size: 13px;" +
+      "text-align:center;" +
       "}" +
       ".eth-btn:active {" +
       "box-shadow: 0 1px 1px #757575;" +
