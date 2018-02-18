@@ -12,9 +12,9 @@
     "babelify": "./node_modules/.bin/babel src --out-dir dist",
     "uglify": "./node_modules/.bin/uglifyjs dist/*.js --compress --mangle --output dist/index.min.js",
     "build": "npm run clean && npm run babelify && npm run uglify",
-    "update-example": "rm -f website/example/index.html && cp example/index.html website/example/ && sed -i '' -e 's,../src/index.min.js,https://unpkg.com/brunobar79/eth-commerce/dist/index.min.js,g' website/example/index.html",
+    "update-example": "rm -f website/example/index.html && cp example/index.html website/example/ && sed -i '' -e 's,../src/index.min.js,https://unpkg.com/eth-commerce,g' website/example/index.html",
     "publish::website": "npm run update-example && git subtree push --prefix website heroku master",
-    "publsh::npm": "npm publish ./"
+    "publish::npm": "npm publish ./"
   },
   "repository": {
     "type": "git",
