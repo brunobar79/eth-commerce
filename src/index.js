@@ -1,19 +1,17 @@
 class EthCommerce {
-
-  constructor(config){
-  	
-  	this.config = {
-  		//Minimum amount of confirmations required to 
-  		//Consider the transaction irreversible
-  		MIN_CONFIRMATIONS: 3,
-  		//Interval in seconds to check for confirmation
-  		INTERVAL: 3,
-  		//This is the multipier factor of the estimate gas
-  		//to help confirm transactions faster
-  		GAS_BOOST: 25,
-  		//Override w/user config
-  		...config
-  	}
+  constructor(config) {
+    this.config = {
+      //Minimum amount of confirmations required to
+      //Consider the transaction irreversible
+      MIN_CONFIRMATIONS: 3,
+      //Interval in seconds to check for confirmation
+      INTERVAL: 3,
+      //This is the multipier factor of the estimate gas
+      //to help confirm transactions faster
+      GAS_BOOST: 25,
+      //Override w/user config
+      ...config
+    };
   }
   getImage(name) {
     switch (name) {
@@ -298,7 +296,7 @@ class EthCommerce {
   }
 
   waitForConfirmation(tx) {
-      let txBlockNumber = null,
+    let txBlockNumber = null,
       confirmations = 0,
       start_time = Date.now();
 
@@ -349,7 +347,11 @@ class EthCommerce {
               reject(error);
             } else {
               web3.eth.sendTransaction(
-                { ...tData, gas: gas, gasPrice: gasPrice * this.config.GAS_BOOST },
+                {
+                  ...tData,
+                  gas: gas,
+                  gasPrice: gasPrice * this.config.GAS_BOOST
+                },
                 (error, txID) => {
                   if (error) {
                     reject(error);
