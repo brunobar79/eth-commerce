@@ -9,6 +9,8 @@ class EthCommerce {
       //This is the multipier factor of the estimate gas
       //to help confirm transactions faster
       GAS_BOOST: 25,
+      //Let the library handle the UI
+      HANDLE_UI: true,
       //Override w/user config
       ...config
     };
@@ -24,7 +26,7 @@ class EthCommerce {
     }
   }
 
-  //metamascara is currently broken, so we're defaulting to false for now...
+  //metamascara is not working ATM, so we're defaulting to false for now...
   render(options, errorCallback, successCallback, tryMetamascara = false) {
     const { targetElement, amount, address, currency, custom, type } = options;
 
@@ -50,7 +52,9 @@ class EthCommerce {
           this.injectMetamascara(options);
         } else {
           console.log("no web 3");
-          this.renderNoWeb3(targetElement);
+          if(this.config.HANDLE_UI){
+          	this.renderNoWeb3(targetElement);
+      	   }
           this.errorCallback({ error: "no web3 detected" });
         }
       }
@@ -141,22 +145,21 @@ class EthCommerce {
     const a = document.createElement("a");
     a.classList.add("eth-btn");
 
-    const iconWrapper = document.createElement("span");
-    iconWrapper.classList.add("eth-icon-wrapper");
+    if(this.config.HANDLE_UI){
+	    const iconWrapper = document.createElement("span");
+	    iconWrapper.classList.add("eth-icon-wrapper");
 
-    const img = document.createElement("img");
-    img.src = this.getImage("ETHEREUM_ICON");
-    img.id = "eth-icon-svg";
+	    const img = document.createElement("img");
+	    img.src = this.getImage("ETHEREUM_ICON");
+	    img.id = "eth-icon-svg";
+	    iconWrapper.appendChild(img);
+	    a.appendChild(iconWrapper);
+	}
 
     const span = document.createElement("span");
     span.id = "eth-btn-text";
 
-    iconWrapper.appendChild(img);
-    a.appendChild(iconWrapper);
     a.appendChild(span);
-
-    let input = null,
-      select = null;
 
     switch (type) {
       case "PAY":
@@ -176,10 +179,11 @@ class EthCommerce {
       e.preventDefault();
       if (!this.loading) {
         this.loading = true;
-
-        document.getElementById("eth-icon-svg").src = this.getImage(
-          "LOADING_ICON"
-        );
+        if(this.config.HANDLE_UI){
+	        document.getElementById("eth-icon-svg").src = this.getImage(
+	          "LOADING_ICON"
+	        );
+    	}
         this.getEtherPriceIn(currency)
           .then(price => {
             let amountIntETH = parseFloat(amount / price);
@@ -187,18 +191,33 @@ class EthCommerce {
 
             this.sendTransaction(account, address, amountToReceive)
               .then(tx => {
-                document.getElementById("eth-btn-text").textContent =
-                  "Waiting for confirmation";
-                this.waitForConfirmation(tx);
+
+              	if(document.getElementById("eth-btn-text")){
+			  		document.getElementById("eth-btn-text").classList.add('waiting');
+			  	}
+              	
+              	if(this.config.HANDLE_UI){
+	                document.getElementById("eth-btn-text").textContent =
+	                  "Waiting for confirmation";
+	                this.waitForConfirmation(tx, this.config.MIN_CONFIRMATIONS, this.config.INTERVAL);
+            	}
+
               })
               .catch(e => {
+
                 console.log("Error sending transaction", e);
 
-                document.getElementById("eth-icon-svg").src = this.getImage(
-                  "ETHEREUM_ICON"
-                );
-                document.getElementById("eth-btn-text").textContent =
-                  "Pay with Ethereum";
+                if(this.config.HANDLE_UI){
+	                document.getElementById("eth-icon-svg").src = this.getImage(
+	                  "ETHEREUM_ICON"
+	                );
+	                document.getElementById("eth-btn-text").textContent =
+	                  "Pay with Ethereum";
+              	}
+
+              	if(document.getElementById("eth-btn-text")){
+			  		document.getElementById("eth-btn-text").classList.remove('waiting');
+			  	}
 
                 this.errorCallback(e);
                 this.loading = false;
@@ -206,13 +225,13 @@ class EthCommerce {
           })
           .catch(e => {
             console.log("Error getting ETH price", e);
-
-            document.getElementById("eth-icon-svg").src = this.getImage(
-              "ETHEREUM_ICON"
-            );
-            document.getElementById("eth-btn-text").textContent =
-              "Pay with Ethereum";
-
+            if(this.config.HANDLE_UI){
+	            document.getElementById("eth-icon-svg").src = this.getImage(
+	              "ETHEREUM_ICON"
+	            );
+	            document.getElementById("eth-btn-text").textContent =
+	              "Pay with Ethereum";
+            }
             this.errorCallback(e);
             this.loading = false;
           });
@@ -295,7 +314,20 @@ class EthCommerce {
     ref.parentNode.insertBefore(style, ref);
   }
 
-  waitForConfirmation(tx) {
+  onTransactionConfirmed(result){
+  	if(document.getElementById("eth-btn-text")){
+  		document.getElementById("eth-btn-text").classList.remove('waiting');
+  	}
+
+  	if(this.config.HANDLE_UI){
+		document.getElementById("eth-btn-text").textContent ="Thank you!";
+  		document.getElementById("eth-icon-svg").src = this.getImage("SUCCESS_ICON");
+  	}
+
+  	this.successCallback(result);
+  }
+
+  waitForConfirmation(tx, minConfirmations, interval) {
     let txBlockNumber = null,
       confirmations = 0,
       start_time = Date.now();
@@ -309,18 +341,11 @@ class EthCommerce {
               if (!error) {
                 const confirmations = currentBlockNumber - txBlockNumber;
                 console.log(confirmations, "confirmations");
-                if (confirmations >= this.config.MIN_CONFIRMATIONS) {
+                if (confirmations >= minConfirmations) {
                   const delta = (Date.now() - start_time) / 1000;
                   console.log(`Transaction took ${delta} seconds to confirm`);
                   clearInterval(checkConfirmations);
-
-                  document.getElementById("eth-btn-text").textContent =
-                    "Thank you!";
-                  document.getElementById("eth-icon-svg").src = this.getImage(
-                    "SUCCESS_ICON"
-                  );
-
-                  this.successCallback(result);
+                  this.onTransactionConfirmed(result);
                 }
               } else {
                 this.errorCallback(error);
@@ -333,7 +358,7 @@ class EthCommerce {
           this.errorCallback(error);
         }
       });
-    }, this.config.INTERVAL * 1000);
+    }, interval * 1000);
   }
 
   sendTransaction(account, address, amount) {
