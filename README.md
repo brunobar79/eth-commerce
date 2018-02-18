@@ -1,5 +1,7 @@
-![ETHCommerce Banner](http://www.eth-commerce.com/images/logo-big.png | width=100)
 
+<p align="center">
+<img src="http://www.eth-commerce.com/images/logo-big.png" width="280">
+</p>
 
 <h1 align="center">ETHCommerce</h1>
 
