@@ -351,6 +351,10 @@
     .compatibility{
         padding-top:40px !important;
     }
+
+    .lx-footer-social-link{
+        float: none !important;
+    }
 }
 /* features */
 
@@ -1402,7 +1406,6 @@
     font-weight: 400;
     color: #ffffff;
     letter-spacing: 1px;
-    text-transform: capitalize;
     line-height: 25px;
 }
 .lx-footer-social {
