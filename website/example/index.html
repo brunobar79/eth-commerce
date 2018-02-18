@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<title>EthCommerce - Examples</title>
+	<meta name="description" content="EthCommerce examples">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js">
     </script>
     <style>
-           .main{
+            .main{
            
                    font-family: "Heebo", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
                    font-style: normal;
@@ -27,6 +31,8 @@
                    width: 45%;
                    margin-right: 5%;
                }
+
+
            
                .title{
                    color: #333;
@@ -62,6 +68,18 @@
                    color: white;
                    font-size: 18px;
                }
+
+                @media only screen and (max-width: 768px) {
+                    .left-col, .right-col {
+                        width: 90%;
+                        margin: auto;
+                        display: block;
+                        float: none;
+                    }
+                    code{
+                        font-size: 14px;
+                    }
+                }
     </style>
     <script>
            //Detect that the users are not in mainnet
