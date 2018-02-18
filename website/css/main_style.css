@@ -244,7 +244,7 @@
  .lx-hero-info,.lx-hero-img{
      float: left;
      width:60%;
-     padding: 210px 15px 0 ;
+     padding: 180px 15px 0 ;
 }
  .lx-hero-img{
      width:40%;
@@ -1453,4 +1453,33 @@
      letter-spacing: 1px;
      color: #242424;
      margin: 20px 0;
+}
+
+.compatibility{
+    clear: both;
+    height: 150px;
+    width: 100%;
+    display: block;
+    padding-top: 160px;
+    margin-bottom: 100px;
+}
+.compatibility ul {
+    width: 505px;
+    height: 150px;
+    margin: auto;
+    margin-top: 20px;
+}
+.compatibility ul li{
+    padding: 20px;
+    float: left;
+    display: inline-block;
+}
+.compatibility img{
+    height: 110px;
+    width: auto;
+    display: block;
+}
+
+#features{
+    margin-top: 220px;
 }
