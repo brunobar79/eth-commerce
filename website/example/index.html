@@ -1,237 +1,235 @@
-
+<!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
-<style>
-	.main{
-
-		font-family: "Heebo", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-    	font-style: normal;
-    	display: block;
-	}
-
-	h1, h4{
-		margin: 30px;
-		text-align: center;
-	}
-
-	.left-col{
-		float: left;
-		width: 50%;
-	}
-	.right-col{
-		float: right;
-		width: 50%;
-	}
-
-	.title{
-		color: #333;
-		font-size: 20px;
-		margin-top: 40px;
-		margin-bottom: 40px;
-		text-align: center;
-	}
-
-	.sample-button {
-		display: block;
-		max-width: 220px;
-    	margin: auto;
-	}
-
-	.row{
-		display: inline-block;
-    	width: 100%;
-	}
-
-	/*Custom button styles*/
-	#custom-button .eth-btn{
-		border-radius: 30px;
-		background-color: #263cb8;
-		padding: 10px 15px;
-	}
-
-	#custom-button .eth-icon-wrapper{
-		display: none;
-	} 
-
-	#custom-button #eth-btn-text{
-		color: white;
-		font-size: 18px;
-	}
-
-
-
-</style>
-<script>
-
-	//Detect that the users are not in mainnet
-	window.addEventListener('load', function() {
-
-
-	    // Checking if Web3 has been injected by the browser (Mist/MetaMask)
-		if (typeof web3 !== 'undefined') {
-			// Use Mist/MetaMask's provider
-			web3js = new Web3(web3.currentProvider);
-			web3js.version.getNetwork((err, netId) => {
-			  if(!err && netId==="1"){
-			  	document.getElementById('mainnet-warning').style.display='block';
-			  }
-			})
-
-		} else {
-		console.log('No web3? You should consider trying MetaMask!')
-		// fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
-		web3js = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-		}
-
-	});
-</script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js">
+    </script>
+    <style>
+           .main{
+           
+                   font-family: "Heebo", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+                   font-style: normal;
+                   display: block;
+               }
+           
+               h1, h4{
+                   margin: 30px;
+                   text-align: center;
+               }
+           
+               .left-col{
+                   float: left;
+                   width: 45%;
+                   margin-left: 5%;
+               }
+               .right-col{
+                   float: right;
+                   width: 45%;
+                   margin-right: 5%;
+               }
+           
+               .title{
+                   color: #333;
+                   font-size: 20px;
+                   margin-top: 40px;
+                   margin-bottom: 40px;
+                   text-align: center;
+               }
+           
+               .sample-button {
+                   display: block;
+                   max-width: 220px;
+                   margin: auto;
+               }
+           
+               .row{
+                   display: inline-block;
+                   width: 100%;
+               }
+           
+               /*Custom button styles*/
+               #custom-button .eth-btn{
+                   border-radius: 30px;
+                   background-color: #263cb8;
+                   padding: 10px 15px;
+               }
+           
+               #custom-button .eth-icon-wrapper{
+                   display: none;
+               } 
+           
+               #custom-button #eth-btn-text{
+                   color: white;
+                   font-size: 18px;
+               }
+    </style>
+    <script>
+           //Detect that the users are not in mainnet
+               window.addEventListener('load', function() {
+           
+           
+                   // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+                   if (typeof web3 !== 'undefined') {
+                       // Use Mist/MetaMask's provider
+                       web3js = new Web3(web3.currentProvider);
+                       web3js.version.getNetwork((err, netId) => {
+                         if(!err && netId==="1"){
+                           document.getElementById('mainnet-warning').style.display='block';
+                         }
+                       })
+           
+                   } else {
+                   console.log('No web3? You should consider trying MetaMask!')
+                   // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
+                   web3js = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+                   }
+           
+               });
+    </script>
+    <title></title>
 </head>
 <body>
-
-<div class="main">
-	<h1>ETHcommerce Examples</h1>
-	
-	<h4 id="mainnet-warning" style="display:none;color: red;">Make sure you are in a testnet (for ex. Ropsten) or using your local instance, otherwise if you try it on mainnet your ETH will be lost!</h4>
-
-	<div class="row">
-		<div class="left-col">
-			<div class="title">Pay with Ethereum</div>
-			<div id="pay-button" class="sample-button"></div>
-		</div>
-		<div class="right-col">
-			<pre>
-				<code class="language-javascript">
-	const ethCommerce = new EthCommerce();
-	ethCommerce.render(
-		{
-			targetElement: 'pay-button',
-			type: 'PAY',
-			amount: 10,
-			currency: 'USD',
-			address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
-		}, (e)=>{
-			console.log('error callback', e);
-		},(tx)=>{
-			console.log('success callback', tx);
-		}
-	);
-				</code>
-			</pre>
-		</div>
-	</div>
-
-
-	<div class="row">
-		<div class="left-col">
-			<div class="title">Buy with Ethereum</div>
-			<div id="buy-button" class="sample-button"></div>
-		</div>
-		<div class="right-col">
-			<pre>
-				<code class="language-javascript">
-	const ethCommerce2 = new EthCommerce();
-	ethCommerce.render(
-		{
-			targetElement: 'buy-button',
-			type: 'BUY',
-			amount: 5,
-			currency: 'EUR',
-			address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
-		}, (e)=>{
-			console.log('error callback', e);
-		},(tx)=>{
-			console.log('success callback', tx);
-		}
-	);
-				</code>
-			</pre>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="left-col">
-			<div class="title">Custom button</div>
-			<div id="custom-button" class="sample-button"></div>
-		</div>
-		<div class="right-col">
-			<pre>
-				<code class="language-javascript">
-	const ethCommerce3 = new EthCommerce();
-	ethCommerce3.render(
-		{
-			targetElement: 'custom-button',
-			type: 'CUSTOM',
-			amount: 100,
-			currency: 'CNY',
-			address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
-			label: 'Get it with ETH!'
-		}, (e)=>{
-			console.log('error callback', e);
-		},(tx)=>{
-			console.log('success callback', tx);
-		}
-	);
-				</code>
-			</pre>
-		</div>
-	</div>
-
-
-</div>
-
-<script  type="text/javascript" src="https://unpkg.com/eth-commerce"></script> 
-<script type="text/javascript">
-(function() {
-
-	const ethCommerce = new EthCommerce();
-	ethCommerce.render(
-		{
-			targetElement: 'pay-button',
-			type: 'PAY',
-			amount: 10,
-			currency: 'USD',
-			address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
-		}, (e)=>{
-			console.log('error callback', e);
-		},(tx)=>{
-			console.log('success callback', tx);
-		}
-	);
-
-	const ethCommerce2 = new EthCommerce();
-	ethCommerce.render(
-		{
-			targetElement: 'buy-button',
-			type: 'BUY',
-			amount: 5,
-			currency: 'EUR',
-			address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
-		}, (e)=>{
-			console.log('error callback', e);
-		},(tx)=>{
-			console.log('success callback', tx);
-		}
-	);
-
-	const ethCommerce3 = new EthCommerce();
-	ethCommerce3.render(
-		{
-			targetElement: 'custom-button',
-			type: 'CUSTOM',
-			amount: 100,
-			currency: 'CNY',
-			address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4',
-			label: 'Get it with ETH!'
-		}, (e)=>{
-			console.log('error callback', e);
-		},(tx)=>{
-			console.log('success callback', tx);
-		}
-	);
-
-})();
-</script> 
+    <div class="main">
+        <h1>ETHcommerce Examples</h1>
+        <h4 id="mainnet-warning" style="display:none;color: red;">Make sure you are in a testnet (for ex. Ropsten) or using your local instance, otherwise if you try it on mainnet your ETH will be lost!</h4>
+        <div class="row">
+            <div class="left-col">
+                <div class="title">
+                    Pay with Ethereum
+                </div>
+                <div class="sample-button" id="pay-button"></div>
+            </div>
+            <div class="right-col">
+                <pre>
+                <code class="language-javascript">
+const ethCommerce = new EthCommerce();
+ethCommerce.render(
+    {
+        targetElement: 'pay-button',
+        type: 'PAY',
+        amount: 10,
+        currency: 'USD',
+        address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
+    }, (e)=&gt;{
+        console.log('error callback', e);
+    },(tx)=&gt;{
+        console.log('success callback', tx);
+    }
+);
+                </code>
+            </pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="left-col">
+                <div class="title">
+                    Buy with Ethereum
+                </div>
+                <div class="sample-button" id="buy-button"></div>
+            </div>
+            <div class="right-col">
+                <pre>
+                <code class="language-javascript">
+const ethCommerce2 = new EthCommerce();
+ethCommerce.render(
+    {
+        targetElement: 'buy-button',
+        type: 'BUY',
+        amount: 5,
+        currency: 'EUR',
+        address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
+    }, (e)=&gt;{
+        console.log('error callback', e);
+    },(tx)=&gt;{
+        console.log('success callback', tx);
+    }
+);
+                </code>
+            </pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="left-col">
+                <div class="title">
+                    Custom button
+                </div>
+                <div class="sample-button" id="custom-button"></div>
+            </div>
+            <div class="right-col">
+                <pre>
+                <code class="language-javascript">
+const ethCommerce3 = new EthCommerce();
+ethCommerce3.render(
+    {
+        targetElement: 'custom-button',
+        type: 'CUSTOM',
+        amount: 100,
+        currency: 'CNY',
+        address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
+        label: 'Get it with ETH!'
+    }, (e)=&gt;{
+        console.log('error callback', e);
+    },(tx)=&gt;{
+        console.log('success callback', tx);
+    }
+);
+                </code>
+            </pre>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/eth-commerce" type="text/javascript">
+    </script> 
+    <script type="text/javascript">
+           (function() {
+           
+               const ethCommerce = new EthCommerce();
+               ethCommerce.render(
+                   {
+                       targetElement: 'pay-button',
+                       type: 'PAY',
+                       amount: 10,
+                       currency: 'USD',
+                       address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
+                   }, (e)=>{
+                       console.log('error callback', e);
+                   },(tx)=>{
+                       console.log('success callback', tx);
+                   }
+               );
+           
+               const ethCommerce2 = new EthCommerce();
+               ethCommerce.render(
+                   {
+                       targetElement: 'buy-button',
+                       type: 'BUY',
+                       amount: 5,
+                       currency: 'EUR',
+                       address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
+                   }, (e)=>{
+                       console.log('error callback', e);
+                   },(tx)=>{
+                       console.log('success callback', tx);
+                   }
+               );
+           
+               const ethCommerce3 = new EthCommerce();
+               ethCommerce3.render(
+                   {
+                       targetElement: 'custom-button',
+                       type: 'CUSTOM',
+                       amount: 100,
+                       currency: 'CNY',
+                       address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4',
+                       label: 'Get it with ETH!'
+                   }, (e)=>{
+                       console.log('error callback', e);
+                   },(tx)=>{
+                       console.log('success callback', tx);
+                   }
+               );
+           
+           })();
+    </script>
 </body>
 </html>
