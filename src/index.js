@@ -10,7 +10,7 @@ class EthCommerce {
   		INTERVAL: 3,
   		//This is the multipier factor of the estimate gas
   		//to help confirm transactions faster
-  		GAS_BOOST: 20,
+  		GAS_BOOST: 25,
   		//Override w/user config
   		...config
   	}
