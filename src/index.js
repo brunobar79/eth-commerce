@@ -52,9 +52,9 @@ class EthCommerce {
           this.injectMetamascara(options);
         } else {
           console.log("no web 3");
-          if(this.config.HANDLE_UI){
-          	this.renderNoWeb3(targetElement);
-      	   }
+          if (this.config.HANDLE_UI) {
+            this.renderNoWeb3(targetElement);
+          }
           this.errorCallback({ error: "no web3 detected" });
         }
       }
@@ -145,16 +145,16 @@ class EthCommerce {
     const a = document.createElement("a");
     a.classList.add("eth-btn");
 
-    if(this.config.HANDLE_UI){
-	    const iconWrapper = document.createElement("span");
-	    iconWrapper.classList.add("eth-icon-wrapper");
+    if (this.config.HANDLE_UI) {
+      const iconWrapper = document.createElement("span");
+      iconWrapper.classList.add("eth-icon-wrapper");
 
-	    const img = document.createElement("img");
-	    img.src = this.getImage("ETHEREUM_ICON");
-	    img.id = "eth-icon-svg";
-	    iconWrapper.appendChild(img);
-	    a.appendChild(iconWrapper);
-	}
+      const img = document.createElement("img");
+      img.src = this.getImage("ETHEREUM_ICON");
+      img.id = "eth-icon-svg";
+      iconWrapper.appendChild(img);
+      a.appendChild(iconWrapper);
+    }
 
     const span = document.createElement("span");
     span.id = "eth-btn-text";
@@ -179,11 +179,11 @@ class EthCommerce {
       e.preventDefault();
       if (!this.loading) {
         this.loading = true;
-        if(this.config.HANDLE_UI){
-	        document.getElementById("eth-icon-svg").src = this.getImage(
-	          "LOADING_ICON"
-	        );
-    	}
+        if (this.config.HANDLE_UI) {
+          document.getElementById("eth-icon-svg").src = this.getImage(
+            "LOADING_ICON"
+          );
+        }
         this.getEtherPriceIn(currency)
           .then(price => {
             let amountIntETH = parseFloat(amount / price);
@@ -191,39 +191,43 @@ class EthCommerce {
 
             this.sendTransaction(account, address, amountToReceive)
               .then(tx => {
+                if (document.getElementById("eth-btn-text")) {
+                  document
+                    .getElementById("eth-btn-text")
+                    .classList.add("waiting");
+                }
 
-              	if(document.getElementById("eth-btn-text")){
-			  		document.getElementById("eth-btn-text").classList.add('waiting');
-			  	}
-              	
-              	if(this.config.HANDLE_UI){
-	                document.getElementById("eth-btn-text").textContent =
-	                  "Waiting for confirmation";
-	                  const waiting = document.createElement('p');
-	                  waiting.classList.add('eth-waiting');
-	                  waiting.id='hold-tight';
-	                  waiting.textContent = 'Hold tight! This might take a while..';
-	                  document.getElementById(targetElement).appendChild(waiting);
-
-            	}
-	            this.waitForConfirmation(tx, this.config.MIN_CONFIRMATIONS, this.config.INTERVAL);
-
+                if (this.config.HANDLE_UI) {
+                  document.getElementById("eth-btn-text").textContent =
+                    "Waiting for confirmation";
+                  const waiting = document.createElement("p");
+                  waiting.classList.add("eth-waiting");
+                  waiting.id = "hold-tight";
+                  waiting.textContent = "Hold tight! This might take a while..";
+                  document.getElementById(targetElement).appendChild(waiting);
+                }
+                this.waitForConfirmation(
+                  tx,
+                  this.config.MIN_CONFIRMATIONS,
+                  this.config.INTERVAL
+                );
               })
               .catch(e => {
-
                 console.log("Error sending transaction", e);
 
-                if(this.config.HANDLE_UI){
-	                document.getElementById("eth-icon-svg").src = this.getImage(
-	                  "ETHEREUM_ICON"
-	                );
-	                document.getElementById("eth-btn-text").textContent =
-	                  "Pay with Ethereum";
-              	}
+                if (this.config.HANDLE_UI) {
+                  document.getElementById("eth-icon-svg").src = this.getImage(
+                    "ETHEREUM_ICON"
+                  );
+                  document.getElementById("eth-btn-text").textContent =
+                    "Pay with Ethereum";
+                }
 
-              	if(document.getElementById("eth-btn-text")){
-			  		document.getElementById("eth-btn-text").classList.remove('waiting');
-			  	}
+                if (document.getElementById("eth-btn-text")) {
+                  document
+                    .getElementById("eth-btn-text")
+                    .classList.remove("waiting");
+                }
 
                 this.errorCallback(e);
                 this.loading = false;
@@ -231,12 +235,12 @@ class EthCommerce {
           })
           .catch(e => {
             console.log("Error getting ETH price", e);
-            if(this.config.HANDLE_UI){
-	            document.getElementById("eth-icon-svg").src = this.getImage(
-	              "ETHEREUM_ICON"
-	            );
-	            document.getElementById("eth-btn-text").textContent =
-	              "Pay with Ethereum";
+            if (this.config.HANDLE_UI) {
+              document.getElementById("eth-icon-svg").src = this.getImage(
+                "ETHEREUM_ICON"
+              );
+              document.getElementById("eth-btn-text").textContent =
+                "Pay with Ethereum";
             }
             this.errorCallback(e);
             this.loading = false;
@@ -318,26 +322,28 @@ class EthCommerce {
       "background: #F8F8F8;" +
       "color: #fff;" +
       "user-select: none;" +
-      "."
-      "}";
+      ".";
+    ("}");
 
     const ref = document.querySelector("script");
     ref.parentNode.insertBefore(style, ref);
   }
 
-  onTransactionConfirmed(result){
-  	if(document.getElementById("eth-btn-text")){
-  		document.getElementById("eth-btn-text").classList.remove('waiting');
-  		const hold = document.getElementById("hold-tight");
-  		hold.parentNode.removeChild(hold);
-  	}
+  onTransactionConfirmed(result) {
+    if (document.getElementById("eth-btn-text")) {
+      document.getElementById("eth-btn-text").classList.remove("waiting");
+      const hold = document.getElementById("hold-tight");
+      hold.parentNode.removeChild(hold);
+    }
 
-  	if(this.config.HANDLE_UI){
-		document.getElementById("eth-btn-text").textContent ="Thank you!";
-  		document.getElementById("eth-icon-svg").src = this.getImage("SUCCESS_ICON");
-  	}
+    if (this.config.HANDLE_UI) {
+      document.getElementById("eth-btn-text").textContent = "Thank you!";
+      document.getElementById("eth-icon-svg").src = this.getImage(
+        "SUCCESS_ICON"
+      );
+    }
 
-  	this.successCallback(result);
+    this.successCallback(result);
   }
 
   waitForConfirmation(tx, minConfirmations, interval) {
@@ -361,7 +367,7 @@ class EthCommerce {
                   this.onTransactionConfirmed(result);
                 }
               } else {
-              	this.errorCallback(error);
+                this.errorCallback(error);
               }
             });
           } else {
