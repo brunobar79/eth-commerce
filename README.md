@@ -55,7 +55,7 @@ Example values for currency are (USD, EUR, CNY, JPY, etc.)
 
 ### sendTransaction(account, address, amount)
 
-returns a promise after sending a transaction from the available account in web3 (account) to address with the corresponding amount
+Returns a promise after sending a transaction from the available account in web3 (account) to address with the corresponding amount
 
 ### waitForConfirmation(tx, minConfirmations, interval)
 
