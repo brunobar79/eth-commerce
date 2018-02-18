@@ -1486,3 +1486,23 @@
 code {
     font-size: 16px;
 }
+
+.one-liner{
+    padding: 10px;
+}
+
+.pre-one-liner{
+    clear: both;
+}
+
+.mdi-number{
+    padding-left: 20px;
+}
+
+.no-border-bottom{
+    border-bottom: 0px;
+}
+
+.steps h3{
+    text-transform: none;
+}
