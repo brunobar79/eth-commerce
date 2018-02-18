@@ -3,7 +3,7 @@
 <img src="http://www.eth-commerce.com/images/logo-big.png" width="280">
 </p>
 
-<h1 align="center">ETHCommerce</h1>
+<h1 align="center">ETHcommerce</h1>
 
 Peer to Peer (P2P) transactions between you and your customers.
 This means that you pay ZERO FEES, all this powered by a lightweight (~30kb) and easy to integrate Javacript library
