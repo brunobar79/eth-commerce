@@ -1,110 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="utf-8">
-	<title>EthCommerce - Examples</title>
-	<meta name="description" content="EthCommerce examples">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>EthCommerce - Examples</title>
+    <meta name="description" content="EthCommerce examples">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js">
     </script>
     <style>
             .main{
            
-                   font-family: "Heebo", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-                   font-style: normal;
-                   display: block;
-               }
-           
-               h1, h4{
-                   margin: 30px;
-                   text-align: center;
-               }
-           
-               .left-col{
-                   float: left;
-                   width: 45%;
-                   margin-left: 5%;
-               }
-               .right-col{
-                   float: right;
-                   width: 45%;
-                   margin-right: 5%;
-               }
+               font-family: "Heebo", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+               font-style: normal;
+               display: block;
+            }
 
+            h1, h4{
+               margin: 30px;
+               text-align: center;
+            }
 
-           
-               .title{
-                   color: #333;
-                   font-size: 20px;
-                   margin-top: 40px;
-                   margin-bottom: 40px;
-                   text-align: center;
-               }
-           
-               .sample-button {
-                   display: block;
-                   max-width: 220px;
-                   margin: auto;
-               }
-           
-               .row{
-                   display: inline-block;
-                   width: 100%;
-               }
-           
-               /*Custom button styles*/
-               #custom-button .eth-btn{
-                   border-radius: 30px;
-                   background-color: #263cb8;
-                   padding: 10px 15px;
-               }
-           
-               #custom-button .eth-icon-wrapper{
-                   display: none;
-               } 
-           
-               #custom-button #eth-btn-text{
-                   color: white;
-                   font-size: 18px;
-               }
+            .left-col{
+               float: left;
+               width: 45%;
+               margin-left: 5%;
+            }
 
-                @media only screen and (max-width: 768px) {
-                    .left-col, .right-col {
-                        width: 90%;
-                        margin: auto;
-                        display: block;
-                        float: none;
-                    }
-                    code{
-                        font-size: 14px;
-                    }
+            .right-col{
+               float: right;
+               width: 45%;
+               margin-right: 5%;
+            }
+
+            .title{
+               color: #333;
+               font-size: 20px;
+               margin-top: 40px;
+               margin-bottom: 40px;
+               text-align: center;
+            }
+
+            .sample-button {
+               display: block;
+               max-width: 220px;
+               margin: auto;
+            }
+
+            .row{
+               display: inline-block;
+               width: 100%;
+            }
+
+            /*Custom button styles*/
+            #custom-button .eth-btn{
+               border-radius: 30px;
+               background-color: #263cb8;
+               padding: 10px 15px;
+            }
+
+            #custom-button .eth-icon-wrapper{
+               display: none;
+            } 
+
+            #custom-button #eth-btn-text{
+               color: white;
+               font-size: 18px;
+            }
+
+            @media only screen and (max-width: 768px) {
+                .left-col, .right-col {
+                    width: 90%;
+                    margin: auto;
+                    display: block;
+                    float: none;
                 }
+                code{
+                    font-size: 14px;
+                }
+            }
     </style>
     <script>
-           //Detect that the users are not in mainnet
-               window.addEventListener('load', function() {
-           
-           
-                   // Checking if Web3 has been injected by the browser (Mist/MetaMask)
-                   if (typeof web3 !== 'undefined') {
-                       // Use Mist/MetaMask's provider
-                       web3js = new Web3(web3.currentProvider);
-                       web3js.version.getNetwork((err, netId) => {
-                         if(!err && netId==="1"){
-                           document.getElementById('mainnet-warning').style.display='block';
-                         }
-                       })
-           
-                   } else {
-                   console.log('No web3? You should consider trying MetaMask!')
-                   // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
-                   web3js = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-                   }
-           
-               });
+        //Detect that the users are not in mainnet
+        window.addEventListener('load', function() {
+            // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+            if (typeof web3 !== 'undefined') {
+                // Use Mist/MetaMask's provider
+                web3js = new Web3(web3.currentProvider);
+                web3js.version.getNetwork((err, netId) => {
+                    if(!err && netId==="1"){
+                       document.getElementById('mainnet-warning').style.display='block';
+                    }
+                });   
+            } else {
+                console.log('No web3? You should consider trying MetaMask!')
+            }
+        });
     </script>
-    <title></title>
 </head>
 <body>
     <div class="main">
@@ -199,55 +191,54 @@ ethCommerce3.render(
     <script src="https://unpkg.com/eth-commerce" type="text/javascript">
     </script> 
     <script type="text/javascript">
-           (function() {
-           
-               const ethCommerce = new EthCommerce();
-               ethCommerce.render(
-                   {
-                       targetElement: 'pay-button',
-                       type: 'PAY',
-                       amount: 10,
-                       currency: 'USD',
-                       address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
-                   }, (e)=>{
-                       console.log('error callback', e);
-                   },(tx)=>{
-                       console.log('success callback', tx);
-                   }
-               );
-           
-               const ethCommerce2 = new EthCommerce();
-               ethCommerce.render(
-                   {
-                       targetElement: 'buy-button',
-                       type: 'BUY',
-                       amount: 5,
-                       currency: 'EUR',
-                       address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
-                   }, (e)=>{
-                       console.log('error callback', e);
-                   },(tx)=>{
-                       console.log('success callback', tx);
-                   }
-               );
-           
-               const ethCommerce3 = new EthCommerce();
-               ethCommerce3.render(
-                   {
-                       targetElement: 'custom-button',
-                       type: 'CUSTOM',
-                       amount: 100,
-                       currency: 'CNY',
-                       address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4',
-                       label: 'Get it with ETH!'
-                   }, (e)=>{
-                       console.log('error callback', e);
-                   },(tx)=>{
-                       console.log('success callback', tx);
-                   }
-               );
-           
-           })();
+        (function() {
+       
+            const ethCommerce = new EthCommerce();
+            ethCommerce.render(
+               {
+                    targetElement: 'pay-button',
+                    type: 'PAY',
+                    amount: 10,
+                    currency: 'USD',
+                    address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
+               }, (e)=>{
+                    console.log('error callback', e);
+               },(tx)=>{
+                    console.log('success callback', tx);
+               }
+            );
+
+            const ethCommerce2 = new EthCommerce();
+            ethCommerce.render(
+               {
+                    targetElement: 'buy-button',
+                    type: 'BUY',
+                    amount: 5,
+                    currency: 'EUR',
+                    address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
+               }, (e)=>{
+                    console.log('error callback', e);
+               },(tx)=>{
+                    console.log('success callback', tx);
+               }
+            );
+
+            const ethCommerce3 = new EthCommerce();
+            ethCommerce3.render(
+               {
+                    targetElement: 'custom-button',
+                    type: 'CUSTOM',
+                    amount: 100,
+                    currency: 'CNY',
+                    address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4',
+                    label: 'Get it with ETH!'
+               }, (e)=>{
+                    console.log('error callback', e);
+               },(tx)=>{
+                    console.log('success callback', tx);
+                }
+            );
+        })();
     </script>
 </body>
 </html>
