@@ -11,7 +11,7 @@
     "clean": "rm -rf dist/*",
     "babelify": "./node_modules/.bin/babel src --out-dir dist",
     "uglify": "./node_modules/.bin/uglifyjs dist/*.js --compress --mangle --output dist/index.min.js",
-    "build": "npm run clean && npm run babelify && npm run uglify"
+    "build": "npm run clean && npm run babelify && npm run uglify",
     "update-example": "rm -f website/example/index.html && cp example/index.html website/example/",
     "publish::website": "npm run update-example && git subtree push --prefix website heroku master",
     "publsh::npm": "npm publish ./"
