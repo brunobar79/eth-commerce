@@ -43,7 +43,8 @@ ethCommerce.render(
 
 options, errorCallback and successCallback are required
 
-Metamascara feature is experimental. It allows you to render the button without having metamask installed. Learn more [here](https://github.com/MetaMask/mascara)
+Metamascara feature is experimental. It allows you to render the button without having metamask installed.
+Learn more [here](https://github.com/MetaMask/mascara)
 
 Renders a button based on the options and executes the corresponding callbacks after placing and confirm transaction
 
