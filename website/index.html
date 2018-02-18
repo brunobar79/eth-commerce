@@ -1,293 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>ETHcommerce - Accept Ethereum Payments</title>
-		<meta name="description" content="ETHcommerce is a library that allows you to integrate Ethereum payments on your website or mobile app without any backend change required">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-		<link rel="manifest" href="/site.webmanifest">
-		<meta name="msapplication-TileColor" content="#da532c">
-		<meta name="theme-color" content="#ffffff">
-
-		<!-- Google Fonts: Rubik -->
-		<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
-		<!-- Awesomefont -->
-		<link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.css">
-		<!-- linearicons -->
-		<link rel="stylesheet" href="fonts/linearicons/Linearicon.css">
-		<!-- material icons -->
-		<link href="css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
-		<!-- General CSS Settings -->
-		<link rel="stylesheet" href="css/general_style.css">
-		<!-- Reseters -->
-		<link rel="stylesheet" href="css/reset_style.css">
-		<!-- Owl_Carousel CSS -->
-		<link rel="stylesheet" href="plugins/Owl_Carousel/assets/owl.carousel.min.css">
-		<!-- Owl_Carousel default theme CSS -->
-		<link rel="stylesheet" href="plugins/Owl_Carousel/assets/owl.theme.default.min.css">
-		<!-- Main Style of the template -->
-		<link rel="stylesheet" href="css/main_style.css" title="main">
-	</head>
-	<body>
-	
-			
-			<div class="lx-loader">
-				<div>
-					<img src="images/oval.svg" alt="Loading" />
+<head>
+	<meta charset="utf-8">
+	<title>ETHcommerce - Accept Ethereum Payments</title>
+	<meta content="ETHcommerce is a library that allows you to integrate Ethereum payments on your website or mobile app without any backend change required" name="description">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+	<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+	<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+	<link href="/site.webmanifest" rel="manifest">
+	<meta content="#da532c" name="msapplication-TileColor">
+	<meta content="#ffffff" name="theme-color"><!-- Google Fonts: Rubik -->
+	<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet"><!-- Awesomefont -->
+	<link href="fonts/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet"><!-- linearicons -->
+	<link href="fonts/linearicons/Linearicon.css" rel="stylesheet"><!-- material icons -->
+	<link href="css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css"><!-- General CSS Settings -->
+	<link href="css/general_style.css" rel="stylesheet"><!-- Reseters -->
+	<link href="css/reset_style.css" rel="stylesheet"><!-- Prism -->
+	<link href="css/prism.css" rel="stylesheet"><!-- Owl_Carousel CSS -->
+	<link href="plugins/Owl_Carousel/assets/owl.carousel.min.css" rel="stylesheet"><!-- Owl_Carousel default theme CSS -->
+	<link href="plugins/Owl_Carousel/assets/owl.theme.default.min.css" rel="stylesheet"><!-- Main Style of the template -->
+	<link href="css/main_style.css" rel="stylesheet" title="main">
+</head>
+<body>
+	<div class="lx-loader">
+		<div><img alt="Loading" src="images/oval.svg"></div>
+	</div><!-- end of loader -->
+	<!-- header -->
+	<div class="lx-header">
+		<div class="lx-warp">
+			<!-- Logo -->
+			<div class="lx-logo">
+				<a href="#" title="logo"><img alt="" src="images/logo.svg"></a>
+			</div><!-- end of Logo -->
+			<!-- main menu -->
+			<div class="lx-main-menu">
+				<span class="mdi mdi-close lx-menu-close-btn"></span>
+				<div class="lx-clear-fix"></div>
+				<ul>
+					<li>
+						<a href="#home" title="">Home</a>
+					</li>
+					<li>
+						<a href="#features" title="">Features</a>
+					</li>
+					<li>
+						<a href="#get-started" title="">Get Started</a>
+					</li>
+					<li>
+						<a href="#try-it" title="">Try it</a>
+					</li>
+				</ul>
+			</div><!-- End Of Main menu -->
+			<span class="mdi mdi-menu lx-menu-btn"></span>
+		</div>
+	</div><!-- /header -->
+	<!-- Hero -->
+	<div class="lx-hero" id="home">
+		<!-- background image for the hero -->
+		<div class="lx-hero-background"></div><!-- the content of hero -->
+		<div class="lx-hero-corp">
+			<div class="lx-min-warp">
+				<div class="lx-hero-info">
+					<h1 class="lx-hero-title">Accept Ethereum payments on your website or mobile app</h1>
+					<p class="lx-hero-txt">Peer to Peer (P2P) transactions between you and your customers.<br>
+					This means that you pay <b>ZERO FEES</b>, all this powered by a lightweight (~30kb) and easy to integrate Javacript library</p>
+					<p class="lx-hero-txt"></p>
+					<p class="lx-hero-txt"></p><a class="lx-hero-btn-video" href="#features">learn more</a>
 				</div>
+				<div class="lx-hero-img"><img alt="#" src="images/logo-big.png"></div>
 			</div>
-			<!-- end of loader -->
-		<!-- header -->
-		<div class="lx-header">
-			<div class="lx-warp">
-				<!-- Logo -->
-				<div class="lx-logo">
-					<a href="#" title="logo"><img src="images/logo.svg" alt=""></a>
-				</div>
-				<!-- end of Logo -->
-
-				<!-- main menu -->
-				<div class="lx-main-menu ">
-					<span class="mdi mdi-close lx-menu-close-btn"></span>
-					<div class="lx-clear-fix"></div>
+			<div class="compatibility">
+				<div class="lx-bloc-title">
+					<h1>Compatible with:</h1>
 					<ul>
-						<li><a href="#home" title="">Home</a></li>
-						<li><a href="#features" title="">Features</a></li>
-						<li><a href="#get-started" title="">Get Started</a></li>
-						<li><a href="#download" title="">Download</a></li>
+						<li><img class="logos metamask" src="images/metamask-logo.png"></li>
+						<li><img class="logos cipher" src="images/cipher-logo.png"></li>
+						<li><img class="logos status" src="images/status-logo.png"></li>
+						<li><img class="logos toshi" src="images/toshi-logo.png"></li>
 					</ul>
 				</div>
-				<!-- End Of Main menu -->
-
-				<span class="mdi mdi-menu lx-menu-btn"></span>
+			</div>
+		</div><!-- end of hero conent -->
+	</div><!-- /Hero -->
+	<!-- warpper -->
+	<!-- Feauture -->
+	<div class="lx-usage-grey" id="features">
+		<div class="lx-warp">
+			<div class="lx-bloc-title">
+				<h1>Features</h1><br>
+				<br>
+				<p>This is what ETHcommerce provides you:</p><span></span>
+			</div>
+			<div class="lx-blocks-corp">
+				<!-- Feautures item -->
+				<div class="lx-feautre-item">
+					<div class="lx-feautre-item-icon">
+						<span class="mdi mdi-currency-usd-off"></span>
+					</div>
+					<h2 class="lx-feautre-item-title">Zero Fees</h2>
+					<p class="lx-feautre-item-text">We generate a P2P transaction between your customer and you which has zero fees (unlike credit cards or payment gateways)</p>
+				</div><!-- Feautures item -->
+				<div class="lx-feautre-item">
+					<div class="lx-feautre-item-icon">
+						<span class="mdi mdi-clock"></span>
+					</div>
+					<h2 class="lx-feautre-item-title">Almost instant</h2>
+					<p class="lx-feautre-item-text">Transactions will be confirmed in about a minute which guarantees that the transaction is confirmed and your funds are safe</p>
+				</div><!-- Feautures item -->
+				<div class="lx-feautre-item">
+					<div class="lx-feautre-item-icon">
+						<span class="mdi mdi-alert"></span>
+					</div>
+					<h2 class="lx-feautre-item-title">Forget about Fraud</h2>
+					<p class="lx-feautre-item-text">Because Ethereum transactions are irreversible thanks to the power of the blockchain, you don't have to worry about chargebacks anymore</p>
+				</div><!-- Feautures item -->
+				<div class="lx-feautre-item">
+					<div class="lx-feautre-item-icon">
+						<span class="mdi mdi-eye-outline"></span>
+					</div>
+					<h2 class="lx-feautre-item-title">Easy to integrate</h2>
+					<p class="lx-feautre-item-text">With a couple of lines of Javascript, you can start accepting Etherum payments on your website!</p>
+				</div><!-- Feautures item -->
+				<div class="lx-feautre-item">
+					<div class="lx-feautre-item-icon">
+						<span class="mdi mdi-coin"></span>
+					</div>
+					<h2 class="lx-feautre-item-title">Multiple Currencies</h2>
+					<p class="lx-feautre-item-text">Get paid in Ethereum priced to your local currency (USD, EUR, CNY, JPY, etc.), in real time.</p>
+				</div><!-- Feautures item -->
+				<div class="lx-feautre-item">
+					<div class="lx-feautre-item-icon">
+						<span class="mdi mdi-cellphone"></span>
+					</div>
+					<h2 class="lx-feautre-item-title">Mobile App Support</h2>
+					<p class="lx-feautre-item-text">Integrate payments on your iOS and Android React Native mobile apps (coming soon!)</p>
+				</div>
+				<div class="lx-clear-fix"></div>
 			</div>
 		</div>
-		<!-- /header -->
-		<!-- Hero -->
-		<div class="lx-hero" id="home">
-
-			<!-- background image for the hero -->
-			<div class="lx-hero-background"></div>
-
-			<!-- the content of hero -->
-			<div class="lx-hero-corp">
-				<div class="lx-min-warp">
-					<div class="lx-hero-info">
-						<h1 class="lx-hero-title">Accept Ethereum payments on your website or mobile app</h1>
-						<p class="lx-hero-txt">Peer to Peer (P2P) transactions between you and your customers.<br />This means that you pay <b>ZERO FEES</b>, all this powered by a lightweight (~30kb) and easy to integrate Javacript library</p>
-						<p class="lx-hero-txt" /><p class="lx-hero-txt" />
-						<a href="#features" class="lx-hero-btn-video">learn more</a>
-					</div>
-					<div class="lx-hero-img">
-						<img src="images/logo-big.png" alt="#">
+	</div><!-- end of feauture -->
+	<!-- get started -->
+	<div class="lx-why-us-white" id="get-started">
+		<div class="lx-warp">
+			<!-- title of bloc -->
+			<div class="lx-bloc-title">
+				<h1>Get started</h1>
+				<p>ETHcommerce is really easy to integrate on your website. This is how you do it:</p><span></span>
+			</div><!-- end title of bloc -->
+			<!-- bloc warp -->
+			<div class="lx-blocks-corp">
+				<div class="lx-why-img left">
+					<pre>
+                            <code class="language-javascript">
+    const ethCommerce = new EthCommerce();
+    ethCommerce.render(
+        {
+            targetElement: 'pay-button',
+            type: 'PAY',
+            amount: 10,
+            currency: 'USD',
+            address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
+        }, (e)=&gt;{
+            console.log('error callback', e);
+        },(tx)=&gt;{
+            console.log('success callback', tx);
+        }
+    );
+                </code>
+            </pre>
+				</div><!-- get started info -->
+				<div class="lx-why-infos">
+					<!-- get started text and title -->
+					<div class="lx-why-info">
+						<div class="lx-why-title">
+							<span class="mdi mdi-arrow-right"></span>
+							<h3>"Pay with Ethereum" button</h3>
+						</div>
+						<div class="lx-clear-fix"></div>
+						<p class="lx-why-text">Using our default "Pay with Ethereum" button, just choose the element that will render the button, the amount to charge, the currency, and the address where you want to receive the ETH. Let us know what to do after a transaction succeeds or fails and you're done!</p><br>
+						<p class="lx-why-text">The rendered button should look like this:</p>
+						<p class="lx-why-text"><img alt="#" src="images/pay-button-preview.png" width="330"></p>
 					</div>
 				</div>
-				<div class="compatibility">
-					<div class="lx-bloc-title">
-						<h1>Compatible with:</h1>
-						<ul>
-							<li><img class="logos metamask" src="images/metamask-logo.png" /></li>
-							<li><img class="logos cipher" src="images/cipher-logo.png" /></li>
-							<li><img class="logos status" src="images/status-logo.png" /></li>
-							<li><img class="logos toshi" src="images/toshi-logo.png" /></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!-- end of hero conent -->
+				<div class="lx-clear-fix"></div>
+			</div><!-- end bloc warp -->
+			<!-- bloc warp -->
+			<div class="lx-blocks-corp">
+				<!-- getting started info -->
+				<div class="lx-why-infos">
+					<!-- getting started text and title -->
+					<div class="lx-why-info">
+						<div class="lx-why-title">
+							<span class="mdi mdi-arrow-right"></span>
+							<h3>Custom Button</h3>
+						</div>
+						<div class="lx-clear-fix"></div>
+						<p class="lx-why-text">It's very easy to customize the button by overriding the default styles (.eth-btn, .eth-icon-wrapper, .eth-icon-svg, .eth-btn-text, #eth-btn-text, etc.) You can change the text by using type: CUSTOM and setting the option "label"</p><br>
+						<p class="lx-why-text">The rendered button should look like this:</p>
+						<p class="lx-why-text"><img alt="#" src="images/custom-button-preview.png" width="330"></p>
+					</div><!-- end getting started text and title -->
+				</div><!-- end getting started info -->
+				<!-- getting started image -->
+				<div class="lx-why-img right">
+					<pre>
+                <code class="language-javascript">
+    const ethCommerce3 = new EthCommerce();
+    ethCommerce3.render(
+        {
+            targetElement: 'custom-button',
+            type: 'CUSTOM',
+            amount: 100,
+            currency: 'CNY',
+            address: '0x11A7Ca870700f284e4647E55DeD9040f0F86D4D4'
+            label: 'Get it with ETH!'
+        }, (e)=&gt;{
+            console.log('error callback', e);
+        },(tx)=&gt;{
+            console.log('success callback', tx);
+        }
+    );
+                </code>
+            </pre>
+				</div><!-- end getting started image -->
+				<div class="lx-clear-fix"></div>
+			</div><!-- end bloc warp -->
 		</div>
-		<!-- /Hero -->
-		<!-- warpper -->
-
-		<!-- Feauture -->
-		<div class="lx-usage-grey" id="features">
-			<div class="lx-warp">
-				<div class="lx-bloc-title">
-					<h1>Features</h1>
-					<br />
-					<br />
-					<p>This is what ETHcommerce provides you:</p>
-					<span></span>
-				</div>
-				<div class="lx-blocks-corp">
-					<!-- Feautures item -->
-					<div class="lx-feautre-item">
-						<div class="lx-feautre-item-icon">
-							<span class="mdi mdi-currency-usd-off"></span>
-						</div>
-						<h2 class="lx-feautre-item-title">Zero Fees</h2>
-						<p class="lx-feautre-item-text">We generate a P2P transaction between your customer and you which has zero fees (unlike credit cards or payment gateways) </p>
-					</div>
-					<!-- Feautures item -->
-					<div class="lx-feautre-item">
-						<div class="lx-feautre-item-icon">
-							<span class="mdi mdi-clock"></span>
-						</div>
-						<h2 class="lx-feautre-item-title">Almost instant</h2>
-						<p class="lx-feautre-item-text">Transactions will be confirmed in about a minute which guarantees that the transaction is confirmed and your funds are safe</p>
-					</div>
-					<!-- Feautures item -->
-					<div class="lx-feautre-item">
-						<div class="lx-feautre-item-icon">
-							<span class="mdi mdi-alert"></span>
-						</div>
-						<h2 class="lx-feautre-item-title">Forget about Fraud</h2>
-						<p class="lx-feautre-item-text">Because Ethereum transactions are irreversible thanks to the power of the blockchain, you don't have to worry about chargebacks anymore</p>
-					</div>
-					<!-- Feautures item -->
-					<div class="lx-feautre-item">
-						<div class="lx-feautre-item-icon">
-							<span class="mdi mdi-eye-outline"></span>
-						</div>
-						<h2 class="lx-feautre-item-title">Easy to integrate</h2>
-						<p class="lx-feautre-item-text">With a couple of lines of Javascript, you can start accepting Etherum payments on your website!</p>
-					</div>
-					<!-- Feautures item -->
-					<div class="lx-feautre-item">
-						<div class="lx-feautre-item-icon">
-							<span class="mdi mdi-coin"></span>
-						</div>
-						<h2 class="lx-feautre-item-title">Multiple Currencies</h2>
-						<p class="lx-feautre-item-text">Get paid in Ethereum priced to your local currency (USD, EUR, CNY, JPY, etc.), in real time.</p>
-					</div>
-					
-					<!-- Feautures item -->
-					<div class="lx-feautre-item">
-						<div class="lx-feautre-item-icon">
-							<span class="mdi mdi-cellphone"></span>
-						</div>
-						<h2 class="lx-feautre-item-title">Mobile App Support</h2>
-						<p class="lx-feautre-item-text">Integrate payments on your iOS and Android React Native mobile apps (coming soon!)</p>
-					</div>
-					<div class="lx-clear-fix"></div>
-				</div>
-			</div>
+	</div><!-- end why us -->
+	<!-- download block -->
+	<div class="lx-download" id="try-it">
+		<div class="lx-warp">
+			<h1 class="lx-download-title">Try it out!</h1>
+			<p class="lx-download-txt">Check out the github including the official documentation or try the demo</p><a class="lx-download-link" href="https://github.com/brunobar79/eth-commerce"><span class="fa fa-github"></span>Github</a> <a class="lx-download-link" href="./example/"><span class="fa fa-play"></span>Try Demo</a>
 		</div>
-		<!-- end of feauture -->
-
-		<!-- get started -->
-		<div class="lx-why-us-white" id="get-started">
-			<div class="lx-warp">
-				<!-- title of bloc -->
-				<div class="lx-bloc-title">
-					<h1>Get started</h1>
-					<p>ETHcommerce is really easy to integrate on your website. This is how you do it:</p>
-					<span></span>
+	</div><!-- Footer -->
+	<div class="lx-footer">
+		<div class="lx-warp">
+			<div class="lx-footer-top">
+				<div class="lx-logo-footer">
+					<a href="/" title="ETHcommerce"><img alt="ETHcommerce" src="images/logo.svg"></a>
 				</div>
-				<!-- end title of bloc -->
-				<!-- bloc warp -->
-				<div class="lx-blocks-corp">
-
-					<div class="lx-why-img">
-						<img src="images/pay-button-snippet.png" alt="#">
-					</div>
-
-					<!-- get started info -->
-					<div class="lx-why-infos">
-						<!-- get started text and title -->
-						<div class="lx-why-info">
-							<div class="lx-why-title">
-								<span class="mdi mdi-arrow-right"></span>
-								<h3>"Pay with Ethereum" button</h3>
-							</div>
-							<div class="lx-clear-fix"></div>
-							<p class="lx-why-text">As you can see it's very easy to integrate. You can choose the default "Pay with Ethereum" button and pass some minimal configuration like the DOM element that will render the button, that amount to charge, the currency that represents that amount, the address where you want to receive the ETH and two callbacks (success and error)</p>
-							<p class="lx-why-text">
-								<img width="330" src="images/pay-button-preview.png" alt="#">
-							</p>
-						</div>
-					</div>
-					<div class="lx-clear-fix"></div>
+				<div class="lx-links-footer">
+					<ul>
+						<li>
+							<a href="#home" title="feautre">home</a>
+						</li>
+						<li>
+							<a href="#features" title="features">features</a>
+						</li>
+						<li>
+							<a href="#get-started" title="get started">get started</a>
+						</li>
+						<li>
+							<a href="#try-it" title="try it">try it</a>
+						</li>
+					</ul>
 				</div>
-				<!-- end bloc warp -->
-
-				<!-- bloc warp -->
-				<div class="lx-blocks-corp">
-
-					<!-- getting started info -->
-					<div class="lx-why-infos">
-						<!-- getting started text and title -->
-						<div class="lx-why-info">
-							<div class="lx-why-title">
-								<span class="mdi mdi-arrow-right"></span>
-								<h3>Custom Button</h3>
-							</div>
-							<div class="lx-clear-fix"></div>
-							<p class="lx-why-text">It's very easy to customize the button by overriding the default styles (.eth-btn, .eth-icon-wrapper, .eth-icon-svg, .eth-btn-text, #eth-btn-text, etc.)
-
-							You can change the text by using type: CUSTOM and setting the option "label"</p>
-							<p class="lx-why-text">
-								<img width="330" src="images/custom-button-preview.png" alt="#">
-							</p>
-						</div>
-						<!-- end getting started text and title -->
-					</div>
-					<!-- end getting started info -->
-
-					<!-- getting started image -->
-					<div class="lx-why-img">
-						<img src="images/custom-button-snippet.png" alt="#">
-					</div>
-					<!-- end getting started image -->
-					<div class="lx-clear-fix"></div>
+				<div class="lx-clear-fix"></div>
+			</div>
+			<div class="lx-footer-bottom">
+				<p class="lx-footer-copy">created at <a href="https://ethdenver.com" target="_blank">#ethdenver</a><br>
+				#BUIDL</p>
+				<div class="lx-footer-social">
+					<a class="lx-footer-social-link" href="https://github.com/brunobar79/eth-commerce" title=""><i class="fa fa-github"></i></a>
 				</div>
-				<!-- end bloc warp -->
+				<div class="lx-clear-fix"></div>
 			</div>
 		</div>
-		<!-- end why us -->
-		
-		<!-- download block -->
-		<div class="lx-download" id="download">
-			<div class="lx-warp">
-					<h1 class="lx-download-title">Try it out!</h1>
-					<p class="lx-download-txt">Check out the github including the official documentation or try the demo</p>
-
-					<a href="https://github.com/brunobar79/eth-commerce" class="lx-download-link"><span class="fa fa-github"></span>Github</a>
-					<a href="./example/" class="lx-download-link"><span class="fa fa-play"></span>Try Demo</a>
-
-
-			</div>
-		</div>
-		<!-- Footer -->
-		<div class="lx-footer">
-			<div class="lx-warp">
-				<div class="lx-footer-top">
-					<div class="lx-logo-footer">
-						<a href="index.html" title="babar"><img src="images/logo.svg" alt="babar"></a>
-					</div>
-					<div class="lx-links-footer">
-						<ul>
-							<li><a href="#home" title="feautre">home</a></li>
-							<li><a href="#features" title="screenshoot">features</a></li>
-							<li><a href="#get-started" title="reviews">get started</a></li>
-							<li><a href="#download" title="download">download</a></li>
-						</ul>
-					</div>
-					<div class="lx-clear-fix"></div>
-				</div>
-				<div class="lx-footer-bottom">
-					<p class="lx-footer-copy">
-						created at <a href="https://ethdenver.com" target="_blank">#ethdenver</a><br />#BUIDL
-					</p>
-					<div class="lx-footer-social">
-						<a href="https://github.com/brunobar79/eth-commerce" class="lx-footer-social-link" title=""><i class="fa fa-github"></i></a>
-					</div>
-					<div class="lx-clear-fix"></div>
-				</div>
-			</div>
-			
-		</div>
-		<!-- /Footer -->
-		
-		<!-- JQuery -->
-		<script src="js/jquery-1.12.4.min.js"></script>
-		<!-- Owl_Carousel -->
-		<script src="plugins/Owl_Carousel/owl.carousel.min.js"></script>
-		<!-- Main Script -->
-		<script src="js/script.js"></script>	
-	</body>
+	</div><!-- /Footer -->
+	<!-- JQuery -->
+	<script src="js/jquery-1.12.4.min.js">
+	</script> <!-- Owl_Carousel -->
+	 
+	<script src="plugins/Owl_Carousel/owl.carousel.min.js">
+	</script> <!-- Main Script -->
+	 
+	<script src="js/script.js">
+	</script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js">
+	</script>
+</body>
 </html>
