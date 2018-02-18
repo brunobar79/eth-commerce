@@ -199,8 +199,14 @@ class EthCommerce {
               	if(this.config.HANDLE_UI){
 	                document.getElementById("eth-btn-text").textContent =
 	                  "Waiting for confirmation";
-	                this.waitForConfirmation(tx, this.config.MIN_CONFIRMATIONS, this.config.INTERVAL);
+	                  const waiting = document.createElement('p');
+	                  waiting.classList.add('eth-waiting');
+	                  waiting.id='hold-tight';
+	                  waiting.textContent = 'Hold tight! This might take a while..';
+	                  document.getElementById(targetElement).appendChild(waiting);
+
             	}
+	            this.waitForConfirmation(tx, this.config.MIN_CONFIRMATIONS, this.config.INTERVAL);
 
               })
               .catch(e => {
@@ -303,11 +309,16 @@ class EthCommerce {
       ".eth-web3-missing a{	" +
       "color: #FF0000;" +
       "}" +
+      ".eth-waiting{	" +
+      "color: #999999;" +
+      "font-size: 13px;" +
+      "}" +
       ".eth-btn:active {" +
       "box-shadow: 0 1px 1px #757575;" +
       "background: #F8F8F8;" +
       "color: #fff;" +
       "user-select: none;" +
+      "."
       "}";
 
     const ref = document.querySelector("script");
@@ -317,6 +328,8 @@ class EthCommerce {
   onTransactionConfirmed(result){
   	if(document.getElementById("eth-btn-text")){
   		document.getElementById("eth-btn-text").classList.remove('waiting');
+  		const hold = document.getElementById("hold-tight");
+  		hold.parentNode.removeChild(hold);
   	}
 
   	if(this.config.HANDLE_UI){
@@ -348,7 +361,7 @@ class EthCommerce {
                   this.onTransactionConfirmed(result);
                 }
               } else {
-                this.errorCallback(error);
+              	this.errorCallback(error);
               }
             });
           } else {
