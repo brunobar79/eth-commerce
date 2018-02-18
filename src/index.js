@@ -1,4 +1,20 @@
 class EthCommerce {
+
+  constructor(config){
+  	
+  	this.config = {
+  		//Minimum amount of confirmations required to 
+  		//Consider the transaction irreversible
+  		MIN_CONFIRMATIONS: 3,
+  		//Interval in seconds to check for confirmation
+  		INTERVAL: 3,
+  		//This is the multipier factor of the estimate gas
+  		//to help confirm transactions faster
+  		GAS_BOOST: 20,
+  		//Override w/user config
+  		...config
+  	}
+  }
   getImage(name) {
     switch (name) {
       case "ETHEREUM_ICON":
@@ -282,9 +298,7 @@ class EthCommerce {
   }
 
   waitForConfirmation(tx) {
-    const MIN_CONFIRMATIONS = 5,
-      INTERVAL = 3;
-    let txBlockNumber = null,
+      let txBlockNumber = null,
       confirmations = 0,
       start_time = Date.now();
 
@@ -297,7 +311,7 @@ class EthCommerce {
               if (!error) {
                 const confirmations = currentBlockNumber - txBlockNumber;
                 console.log(confirmations, "confirmations");
-                if (confirmations >= MIN_CONFIRMATIONS) {
+                if (confirmations >= this.config.MIN_CONFIRMATIONS) {
                   const delta = (Date.now() - start_time) / 1000;
                   console.log(`Transaction took ${delta} seconds to confirm`);
                   clearInterval(checkConfirmations);
@@ -321,7 +335,7 @@ class EthCommerce {
           this.errorCallback(error);
         }
       });
-    }, INTERVAL * 1000);
+    }, this.config.INTERVAL * 1000);
   }
 
   sendTransaction(account, address, amount) {
@@ -335,7 +349,7 @@ class EthCommerce {
               reject(error);
             } else {
               web3.eth.sendTransaction(
-                { ...tData, gas: gas, gasPrice: gasPrice * 5 },
+                { ...tData, gas: gas, gasPrice: gasPrice * this.config.GAS_BOOST },
                 (error, txID) => {
                   if (error) {
                     reject(error);
