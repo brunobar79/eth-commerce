@@ -6,7 +6,7 @@
 <h1 align="center">ETHcommerce</h1>
 
 Peer to Peer (P2P) transactions between you and your customers.
-This means that you pay ZERO FEES, all this powered by a lightweight (~30kb) and easy to integrate Javacript library
+This means that you pay ZERO FEES, all this powered by a lightweight (~30kb) and easy to integrate Javascript library
 
 You can find usage examples [here](http://www.eth-commerce.com/example/) 
 

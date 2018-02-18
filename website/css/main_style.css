@@ -258,7 +258,7 @@
     display: block;
 }
 .lx-hero-title {
-    font-size: 40px;
+    font-size: 39px;
     font-weight: 300;
     color: #FFFFFF;
     letter-spacing: 0px;
@@ -324,20 +324,32 @@
         width: 100%;
         padding: 100px 15px 0;
     }
-    .lx-hero-img {
-        display: none;
+
+    .lx-hero-img img{
+        height: 240px;
     }
+
+    .lx-hero-img {
+       margin: auto;
+       width: 100%;
+    }
+   
     .lx-hero-title {
         font-size: 24px;
         font-weight: 600;
         color: #FFFFFF;
         letter-spacing: 3px;
-        line-height: 60px;
+        line-height: 35px;
         text-transform: capitalize;
+        margin-top: 30px;
     }
     .lx-hero-btn {
         float: none;
         margin: 15px 30px 15px 0;
+    }
+
+    .compatibility{
+        padding-top:40px !important;
     }
 }
 /* features */
