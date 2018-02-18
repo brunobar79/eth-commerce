@@ -16,10 +16,10 @@ body{
 	font-family:'Roboto', sans-serif;
 }
 p{
-	font-size:16px;
-	font-family:'Montserrat', sans-serif;
-	line-height:28px;
-	color:#232323;
+	font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+    line-height: 28px;
+    color: #3B4859;
 }
 h3,h2,h1{
 	position:relative;

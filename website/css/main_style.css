@@ -1026,7 +1026,7 @@
 }
  .lx-download-link{
      background: #EFEFEF;
-     color: #f82462;
+     color: #263cb8;
      border: 1px solid #FFFFFF;
      padding: 15px 35px;
      font-size: 18px;
@@ -1351,7 +1351,7 @@
 }
 /* footer */
  .lx-footer{
-     background: #0b0d54;
+     background: #222222;
      padding: 60px 0;
 }
  .lx-footer-top{
