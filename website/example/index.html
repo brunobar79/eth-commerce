@@ -11,7 +11,8 @@
     	display: block;
 	}
 
-	h1{
+	h1, h4{
+		margin: 30px;
 		text-align: center;
 	}
 
@@ -62,13 +63,37 @@
 
 
 </style>
+<script>
+
+	//Detect that the users are not in mainnet
+	window.addEventListener('load', function() {
+
+
+	    // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+		if (typeof web3 !== 'undefined') {
+			// Use Mist/MetaMask's provider
+			web3js = new Web3(web3.currentProvider);
+			web3js.version.getNetwork((err, netId) => {
+			  if(!err && netId==="1"){
+			  	document.getElementById('mainnet-warning').style.display='block';
+			  }
+			})
+
+		} else {
+		console.log('No web3? You should consider trying MetaMask!')
+		// fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
+		web3js = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+		}
+
+	});
+</script>
 </head>
 <body>
 
 <div class="main">
-	<h1>Examples</h1>
+	<h1>ETHcommerce Examples</h1>
 	
-	<h4>Make sure you are in a testnet (for ex. Ropsten) or using your local instance, otherwise your ETH will be lost!</h4>
+	<h4 id="mainnet-warning" style="display:none;color: red;">Make sure you are in a testnet (for ex. Ropsten) or using your local instance, otherwise if you try it on mainnet your ETH will be lost!</h4>
 
 	<div class="row">
 		<div class="left-col">
