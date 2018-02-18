@@ -1,6 +1,5 @@
-<p align="center">
-![ETHCommerce Banner](http://www.eth-commerce.com/images/logo-big.png)
-<p>
+![ETHCommerce Banner](http://www.eth-commerce.com/images/logo-big.png | width=100)
+
 
 <h1 align="center">ETHCommerce</h1>
 
@@ -17,7 +16,7 @@ You can find usage examples [here](http://www.eth-commerce.com/example/)
 npm install eth-commerce --save
 ```
 
-##Usage
+## Usage
 
 ```js
 const ethCommerce = new EthCommerce();
