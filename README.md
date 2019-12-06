@@ -39,12 +39,9 @@ ethCommerce.render(
 
 ## Methods
 
-### render(options, errorCallback, successCallback, tryMetamascara = false)
+### render(options, errorCallback, successCallback)
 
 options, errorCallback and successCallback are required
-
-Metamascara feature is experimental. It allows you to render the button without having metamask installed.
-Learn more [here](https://github.com/MetaMask/mascara)
 
 Renders a button based on the options and executes the corresponding callbacks after placing and confirm transaction
 
@@ -67,5 +64,4 @@ Then executes the success callback
 - [ ] Add support for React Native
 - [ ] Add tests
 - [ ] Store the current state in localStorage to be able to restore it in case of page reload
-- [ ] Suggest a way for generating ethereum addresses for merchants that are currently without one (example: MEW, MyCrypto, MetaMask, Coinbase)
 

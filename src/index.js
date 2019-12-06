@@ -26,69 +26,25 @@ class EthCommerce {
     }
   }
 
-  //metamascara is not working ATM, so we're defaulting to false for now...
-  render(options, errorCallback, successCallback, tryMetamascara = false) {
-    const { targetElement, amount, address, currency, custom, type } = options;
+  render(options, errorCallback, successCallback) {
+    const { targetElement } = options;
 
     this.errorCallback = errorCallback;
     this.successCallback = successCallback;
 
     window.addEventListener("load", _ => {
-      // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+      // Checking if Web3 has been injected by the browser (MetaMask)
       if (typeof web3 !== "undefined") {
-        // Use Mist/MetaMask's provider
-        const provider = new Web3(web3.currentProvider);
         // Use the browser's ethereum provider
-        provider.eth.getAccounts((err, accounts) => {
           this.renderButton({
             ...options,
-            account: accounts[0]
           });
-        });
       } else {
-        //Fallback to metamascara
-        if (tryMetamascara) {
-          console.log("trying metamascara");
-          this.injectMetamascara(options);
-        } else {
-          console.log("no web 3");
-          if (this.config.HANDLE_UI) {
-            this.renderNoWeb3(targetElement);
-          }
-          this.errorCallback({ error: "no web3 detected" });
+        if (this.config.HANDLE_UI) {
+          this.renderNoWeb3(targetElement);
         }
+        this.errorCallback({ error: "no web3 detected" });
       }
-    });
-  }
-
-  injectMetamascara(options) {
-    const metamascara = document.createElement("script");
-    metamascara.type = "text/javascript";
-    metamascara.src = "https://wallet.metamask.io/metamascara.js";
-    const ref = document.querySelector("script");
-    ref.parentNode.insertBefore(metamascara, ref);
-    metamascara.addEventListener("load", _ => {
-      console.log("metamascara injected");
-
-      const ethJsScript = document.createElement("script");
-      ethJsScript.type = "text/javascript";
-      ethJsScript.src =
-        "https://cdn.jsdelivr.net/npm/ethjs@0.3.0/dist/ethjs.min.js";
-      const ref = document.querySelector("script");
-      ref.parentNode.insertBefore(ethJsScript, ref);
-      ethJsScript.addEventListener("load", __ => {
-        console.log("ethJS injected");
-        const provider = metamask.createDefaultProvider();
-        const eth = new Eth(provider);
-        eth.accounts((err, accounts) => {
-          this.renderButton({
-            ...options,
-            account: accounts[0]
-          });
-        });
-      });
-
-      this.render(options, this.successCallback, this.errorCallback, false);
     });
   }
 
@@ -119,7 +75,6 @@ class EthCommerce {
       )
         .then(response => response.json())
         .then(data => {
-          console.log("GOT ETH PRICE", data);
           resolve(data[currency]);
         })
         .catch(e => {
@@ -189,52 +144,58 @@ class EthCommerce {
             let amountIntETH = parseFloat(amount / price);
             const amountToReceive = web3.toWei(amountIntETH, "ether");
 
-            this.sendTransaction(account, address, amountToReceive)
-              .then(tx => {
-                if (document.getElementById("eth-btn-text")) {
-                  document
-                    .getElementById("eth-btn-text")
-                    .classList.add("waiting");
-                }
+            return web3.currentProvider.send('eth_requestAccounts', []).then(response => {
+              if(response.result && response.result.length){
+                const account = response.result[0];
 
-                if (this.config.HANDLE_UI) {
-                  document.getElementById("eth-btn-text").textContent =
-                    "Waiting for confirmation";
-                  const waiting = document.createElement("p");
-                  waiting.classList.add("eth-waiting");
-                  waiting.id = "hold-tight";
-                  waiting.textContent = "Hold tight! This might take a while...";
-                  document.getElementById(targetElement).appendChild(waiting);
-                }
-                this.waitForConfirmation(
-                  tx,
-                  this.config.MIN_CONFIRMATIONS,
-                  this.config.INTERVAL
-                );
-              })
-              .catch(e => {
-                console.log("Error sending transaction", e);
+                this.sendTransaction(account, address, amountToReceive)
+                  .then(tx => {
+                    if (document.getElementById("eth-btn-text")) {
+                      document
+                        .getElementById("eth-btn-text")
+                        .classList.add("waiting");
+                    }
 
-                if (this.config.HANDLE_UI) {
-                  document.getElementById("eth-icon-svg").src = this.getImage(
-                    "ETHEREUM_ICON"
-                  );
-                  document.getElementById("eth-btn-text").textContent =
-                    "Pay with Ethereum";
-                }
+                    if (this.config.HANDLE_UI) {
+                      document.getElementById("eth-btn-text").textContent =
+                        "Waiting for confirmation";
+                      const waiting = document.createElement("p");
+                      waiting.classList.add("eth-waiting");
+                      waiting.id = "hold-tight";
+                      waiting.textContent = "Hold tight! This might take a while...";
+                      document.getElementById(targetElement).appendChild(waiting);
+                    }
+                    this.waitForConfirmation(
+                      tx,
+                      this.config.MIN_CONFIRMATIONS,
+                      this.config.INTERVAL
+                    );
+                  })
+                  .catch(e => {
+                    console.error("Error sending transaction", e);
 
-                if (document.getElementById("eth-btn-text")) {
-                  document
-                    .getElementById("eth-btn-text")
-                    .classList.remove("waiting");
-                }
+                    if (this.config.HANDLE_UI) {
+                      document.getElementById("eth-icon-svg").src = this.getImage(
+                        "ETHEREUM_ICON"
+                      );
+                      document.getElementById("eth-btn-text").textContent =
+                        "Pay with Ethereum";
+                    }
 
-                this.errorCallback(e);
-                this.loading = false;
-              });
+                    if (document.getElementById("eth-btn-text")) {
+                      document
+                        .getElementById("eth-btn-text")
+                        .classList.remove("waiting");
+                    }
+
+                    this.errorCallback(e);
+                    this.loading = false;
+                  });
+              }
+            })
           })
           .catch(e => {
-            console.log("Error getting ETH price", e);
+            console.error("Error", e);
             if (this.config.HANDLE_UI) {
               document.getElementById("eth-icon-svg").src = this.getImage(
                 "ETHEREUM_ICON"
@@ -360,10 +321,8 @@ class EthCommerce {
             web3.eth.getBlockNumber((error, currentBlockNumber) => {
               if (!error) {
                 const confirmations = currentBlockNumber - txBlockNumber;
-                console.log(confirmations, "confirmations");
                 if (confirmations >= minConfirmations) {
                   const delta = (Date.now() - start_time) / 1000;
-                  console.log(`Transaction took ${delta} seconds to confirm`);
                   clearInterval(checkConfirmations);
                   this.onTransactionConfirmed(result);
                 }
@@ -371,9 +330,7 @@ class EthCommerce {
                 this.errorCallback(error);
               }
             });
-          } else {
-            console.log("block height: pending");
-          }
+          } 
         } else {
           this.errorCallback(error);
         }
@@ -383,7 +340,6 @@ class EthCommerce {
 
   sendTransaction(account, address, amount) {
     let tData = { from: account, to: address, value: amount };
-    console.log("About to send tx data:", tData);
     return new Promise((resolve, reject) => {
       web3.eth.estimateGas(tData, (error, gas) => {
         if (!error) {
@@ -401,7 +357,6 @@ class EthCommerce {
                   if (error) {
                     reject(error);
                   } else {
-                    console.log("Submitted tx", txID);
                     resolve(txID);
                   }
                 }
